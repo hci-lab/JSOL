@@ -1,3 +1,9 @@
+# ------------------------------------------------------------------------------
+# Project     | GoGLib
+# Module      | Stat Methods
+# Author      | Sherif Emabrak
+# Description | function return mode (The number which appears most often in a set of numbers)
+# ------------------------------------------------------------------------------
 mode = (input_array...) ->
   counter = 1
   max = 0;

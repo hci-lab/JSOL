@@ -1,3 +1,9 @@
+# ------------------------------------------------------------------------------
+# Project     | GoGLib
+# Module      | Stat Methods
+# Author      | Sherif Emabrak
+# Description | functionj return median array of inputs
+# ------------------------------------------------------------------------------
 median = (input_array...) ->
   size = input_array.length
   posetion = 0
