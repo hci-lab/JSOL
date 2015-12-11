@@ -11,7 +11,6 @@ class point
     centerX = @x
     centerY = @y
     radius = 2;
-    x
     context.beginPath();
     context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
     context.fillStyle = 'black';
