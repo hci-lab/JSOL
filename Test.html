@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas1" width="1200" height="500"></canvas>
+
+</body>
+<script src="datalib.min.js"></script>
+<script src="d3.js"></script>
+<script src="jquery-2.2.3.min.js"></script>
+<script src="opencpu-0.4.js"></script>
+<script src="Data.js"></script>
+<script src="transform.js"></script>
+<script src="Scale.js"></script>
+<script src="Axes.js"></script>
+<script src="Geom.js"></script>
+<script src="Define.js"></script>
+<script src="Canvas-Parser.js"></script>
+<script src="GoG-Parser.js"></script>
+<script>
+    /**
+     * Created by Yusuf on 3/12/2016.
+     */
+
+    var specification = {
+        "id": "canvas1",
+        "width": 1200,
+        "height": 500,
+        "margin": 60,
+        "background": "rgba(170, 170, 170, 0.1)",
+        "define": ["function testeval1(){ return 1;}","var GLOBAL = 1;"],
+        "data": [
+            {
+                "name": "troops",
+                "values" : "troops.csv",
+                "format" : {
+                    "type" : "csv"
+                }
+
+            },
+            {
+                "name": "cities",
+                "values" : "cities.csv",
+                "format" : {
+                    "type" : "csv"
+                }
+
+            }
+        ],
+        "transform": [
+//            {
+//                "lang": "R",    // function language
+//                "function": "fibonnaci", // function name
+//                "properties": {
+//                    "data": "static",
+//                    "length": 20,
+//                    "field": "x",
+//                    "library" : "numbers",
+//                    "name": "fibonnaci_x"
+//                }
+//            }
+        ],
+        "scales": [
+            {
+                "name": "xscale",
+                "type": "linear",
+                "range": "width",
+                "domain": {"data": "troops", "field": "long"}
+            },
+            {
+                "name": "yscale",
+                "type": "linear",
+                "range": "height",
+                "domain": {"data": "troops", "field": "lat"}
+            },
+            {
+                "name": "x2scale",
+                "type": "linear",
+                "range": "width",
+                "domain": {"data": "cities", "field": "long"}
+            },
+            {
+                "name": "y2scale",
+                "type": "linear",
+                "range": "height",
+                "domain": {"data": "cities", "field": "lat"}
+            },
+            {
+                "name": "colorscale",
+                "type": "category10",
+                "range": ["#808080","#FF0000" ],
+                "domain": {"data": "troops", "field": "direction"}
+            },{
+                "name": "widthscale",
+                "type": "log",
+                "range": [3,19],
+                "domain": {"data": "troops", "field": "survivors"}
+            }
+
+
+
+        ]
+        , "axes": [
+            {
+                "type": "x", // x axis
+                "data": "cities", // scale for axis
+                "field": "long",
+                "orient": "bottom",
+                "grid": true,
+                "ticks": 5
+            },
+            {
+                "type": "y", // y axis
+                "data": "cities", // scale for axis
+                "field": "lat",
+                "orient": "left",
+                "grid": true,
+                "ticks" : 4
+            }
+        ]
+        , "geom": [
+            {
+                "type": "Line",
+                "data": "troops",
+                "properties": {
+                    "x": "xscale",
+                    "y": "yscale",
+                    "color" : "colorscale",
+                    "width" : "widthscale"
+                }
+            },
+            {
+                "type" : "Text",
+                "data" : "cities",
+                "properties" : {
+                    "x" : "x2scale",
+                    "y" : "y2scale",
+                    "text": "city"
+                }
+            }
+        ]
+
+
+    };
+
+
+    GoG_Parser(specification);
+
+    d3.scale.log().domain([1000,4000]).range([35,350]);
+
+    //    scale({"type" : "log", "domain" : [1000,4000], "range" : [35,350]})
+    //
+    //    console.log(d3.scale.log().domain([1000,4000]).range([35,350])(2000));
+
+
+</script>
+</html>
