@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "Define.js",
+  "sourceRoot": "",
+  "sources": [
+    "Define.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA,IAAA;;AAAM;;;;;;;AAIN,MAAM,CAAA,SAAE,CAAA,OAAR,GAAkB,SAAC,GAAD;AAChB,MAAA;AAAA;OAAA,qCAAA;;iBACE,MAAM,CAAC,MAAD,CAAN,CAAY,CAAZ;AADF;;AADgB"
+}

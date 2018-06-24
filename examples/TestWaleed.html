@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+	
+</head>
+<body>
+<canvas id="canvas1" width="1200" height="500"></canvas>
+
+</body>
+<script src="datalib.min.js"></script>
+<script src="d3.js"></script>
+<script src="jquery-2.2.3.min.js"></script>
+<script src="opencpu-0.4.js"></script>
+<script src="Data.js"></script>
+<script src="transform.js"></script>
+<script src="Scale.js"></script>
+<script src="Axes.js"></script>
+<script src="Geom.js"></script>
+<script src="Define.js"></script>
+<script src="Canvas-Parser.js"></script>
+<script src="GoG-Parser.js"></script>
+<script src="canvasjs.min.js"></script>
+<script src="Guides.js"></script>
+<script>
+     
+//n3mel scal 3a el counter  34an n3rf nersmo fegeom
+
+    var specification = {
+        "id": "canvas1",
+        "width": 1200,
+        "height": 500,
+        "margin": "",
+        "background": "rgba(170, 170, 170, 0.1)",
+        "data": [
+            {
+                "name": "imageData",
+                "values" : "imageData.csv",
+                "format" : {
+                    "type" : "csv"
+                }
+
+            },
+             
+        ],
+		"transform": [
+          
+			/*{ 
+                "function": "groupby", // function name
+                "properties": {
+                    "data": "crimea",
+                    //"length": 20,
+                    "field":"x",
+					"yAxes":"y",
+					"y":"newY"
+                   
+                }
+            }*/
+        ],
+       
+        "scales": [
+            {
+                "name": "xscale",
+                "type": "linear",
+                "range": {"type": "range", "value": [0,900]},
+                "domain": {"data": "imageData", "field": "x1"}
+            },
+            {
+                "name": "yscale",
+                "type": "linear",
+                 "range": {"type": "range", "value":[0,380]},//
+                "domain": {"data": "imageData", "field": "x2"}//hist newY
+            },
+            {
+                "name": "x3scale",
+                "type": "linear",
+                 "range": {"type": "range", "value": ["#d1d1d1", "#000000"]},//
+                "domain": {"data": "imageData", "field": "x3"}//hist newY
+            },
+			 {
+                "name": "x4scale",
+                "type": "linear",
+                 "range": {"type": "range", "value": ["#d1d1d1", "#000000"]},//
+                "domain": {"data": "imageData", "field": "x4"}//hist newY
+            },
+			 {
+                "name": "x5scale",
+                "type": "linear",
+                 "range": {"type": "range", "value": ["#d1d1d1", "#000000"]},//
+                "domain": {"data": "imageData", "field": "x5"}//hist newY
+            },
+			 {
+                "name": "x6scale",
+                "type": "linear",
+                 "range": {"type": "range", "value": ["#d1d1d1", "#000000"]},//
+                "domain": {"data": "imageData", "field": "x6"}//hist newY
+            },
+			 {
+                "name": "x7scale",
+                "type": "linear",
+                 "range": {"type": "range", "value": ["#d1d1d1", "#000000"]},//
+                "domain": {"data": "imageData", "field": "x7"}//hist newY
+            },
+			 {
+                "name": "x8scale",
+                "type": "linear",
+                 "range": {"type": "range", "value": ["#d1d1d1", "#000000"]},//
+                "domain": {"data": "imageData", "field": "x8"}//hist newY
+            },
+			 {
+                "name": "x9scale",
+                "type": "linear",
+                 "range": {"type": "range", "value": ["#d1d1d1", "#000000"]},//
+                "domain": {"data": "imageData", "field": "x9"}//hist newY
+            },
+			 {
+                "name": "x10scale",
+                "type": "linear",
+                 "range": {"type": "range", "value": ["#d1d1d1", "#000000"]},//
+                "domain": {"data": "imageData", "field": "x10"}//hist newY
+            },
+			 {
+                "name": "x11scale",
+                "type": "linear",
+                 "range": {"type": "range", "value": ["#d1d1d1", "#000000"]},//
+                "domain": {"data": "imageData", "field": "x11"}//hist newY
+            },
+             {
+                "name": "x12scale",
+                "type": "linear",
+               "range": {"type": "range", "value": [10,25]},
+                "domain": {"data": "imageData", "field": "x12"}
+            }, 
+            {
+                "name": "x13scale",
+                "type": "linear",
+                 "range": {"type": "range", "value": [9,15]},//
+                "domain": {"data": "imageData", "field": "x13"}//hist newY
+            },	
+            {
+                "name": "x14scale",
+                "type": "category10",
+                 "range": {"type": "range"},//
+                "domain": {"data": "imageData", "field": "x14"}//hist newY
+            },	
+             
+			 ]
+	        // "axes":"x" //x or y or both
+         
+        , "axes": {  
+		    "type": "coord_cartesian", 			 // put your type here first ..
+			// "type": "coord_flib",
+			 
+             "properties": [
+              {
+                "type": "x", // x axis
+                "data": "imageData", // scale for axis
+                "field": "x1",
+                "orient": "bottom",
+		        "grid": true,
+				"text":{"font":"x13scale","colour":"x14scale"},
+				"annotation":{"title":"field X1",
+				"position":"middle",
+				"font":"10px Arial",
+				"colour":"blue"
+				},//edge or middle}
+				"transform":{
+				"function": "pow", // function name
+                "properties": {
+				    "power":2,
+					"name":"power"
+				
+				}
+               
+				
+            }},
+               {
+                "type": "y", // y axis
+                "data": "imageData", // scale for axis
+                "field": "x2",
+                 "orient": "left",
+                "grid": true,
+                "text":{"font":"10px tohma","colour":"blue"},
+                 "annotation":{"title":"field X2",
+                 "position":"edge",
+                 "font":"10px Arial",
+                 "colour":" blue",
+              },
+    "transform":{
+    "function": "pow", // function name
+                "properties": {
+        "power":2,
+     "name":"power"
+    }
+               
+            }
+     }
+           
+        ]
+		}
+        , "geom": [
+		     {
+                  "type": "Image", //hline
+                  "data": "imageData",
+                  "properties": {
+                    "x":"xscale",//xscale
+                    "y":"yscale",//yscale 
+					"pixels":[["x3scale","x4scale","x5scale"],["x6scale","x7scale","x8scale"],["x9scale","x10scale","x11scale"]],
+                   "height":"x12scale",
+				   "width":"x12scale"
+				   
+				   }
+    
+            },
+			
+           /* {
+                "type": "Bar",
+                "data": "crimea",
+                "properties": {
+                    "x": "xscale",//xscale
+                    "y": "yscale",//yscale
+					//"dir":"vertical",
+                    "color" : "colorscale",
+                    "width" : 3 ,
+					"fillColor":"rgba(170, 170, 170, 0.1)",
+					"border":100
+					/*"type": "StackedBar",
+                    "data": "crimea",
+                   "properties": {
+                    "x": "xscale",
+					"y": "yscale",
+					"sort":"c",
+					"color" : "colorscale",
+                    "width" : 15 ,
+					"fillColor":"colorscale"
+				}
+				/*"type": "vline",
+                "data": "crimea",
+                "properties": {
+				    //"groupby" : "x",
+					//"sortby" :"yscale",
+                   "x": "xscale",
+                   "y": "yscale",
+				   "intersect":"yscale" // you can enter your yscale direct or your array []
+				   
+                }
+				*/
+            //}
+			//}*/
+             
+        ], "guides":[
+           
+			  {
+         "type":"legend",
+		       "domain": {
+			    "type":"colour",//colour ,width scale,
+				"data":"imageData",
+		       // "name": ["positive","negative",""], //array
+			   // "field": ["green","blue","yellow"], // name of field colour or width scale //array
+			   "field":"x3scale",
+			    "symbols":{
+				  "gome_type":"bar", //test bar
+				  "width":20,
+				  "height":10,
+				  "line_weight":2,//array,
+				
+				   
+				   }	   
+				   },
+			
+	      "properties": { 
+		          "title":{
+				  "name":"key map",
+				  //"title_position":"center",
+				  "title_color":"black",
+				  "title_font":"12px Arial",
+				   },
+				   "position":{
+		           "x":1050,
+				   "y":50,
+				   "stroke_width":120,
+				   "stroke_height":250,
+				  // "line_width":10,
+		            }
+					},
+				
+				}
+ ]
+ }
+;
+
+
+    GoG_Parser(specification);
+
+   // d3.scale.log().domain([1000,4000]).range([35,350]);
+
+    //    scale({"type" : "log", "domain" : [1000,4000], "range" : [35,350]})
+    //
+    //    console.log(d3.scale.log().domain([1000,4000]).range([35,350])(2000));
+
+
+</script>
+</html>

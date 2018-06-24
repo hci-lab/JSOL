@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas1" width="1200" height="500"></canvas>
+
+</body>
+<script src="datalib.min.js"></script>
+<script src="d3.js"></script>
+<script src="jquery-2.2.3.min.js"></script>
+<script src="opencpu-0.4.js"></script>
+<script src="Data.js"></script>
+<script src="transform.js"></script>
+<script src="Scale.js"></script>
+<script src="Axes.js"></script>
+<script src="Geom.js"></script>
+<script src="Define.js"></script>
+<script src="Canvas-Parser.js"></script>
+<script src="GoG-Parser.js"></script>
+<script src="Guides.js"></script>
+<script>
+    /**
+     * Created by Yusuf on 3/12/2016.
+     */
+
+    var specification = {
+        "id": "canvas1",
+        "width": 1200,
+        "height": 500,
+        "margin": 60,
+        "background": "rgba(170, 170, 170, 0.1)",
+        "define": ["function testeval1(){ return 1;}","var GLOBAL = 1;"],
+        "data": [
+            {
+                "name": "troops",
+                "values" : "troops.csv",
+                "format" : {
+                    "type" : "csv"
+                }
+
+            },
+            {
+                "name": "cities",
+                "values" : "cities.csv",
+                "format" : {
+                    "type" : "csv"
+                }
+
+            }
+        ],
+        "transform": [
+//            {
+//                "lang": "R",    // function language
+//                "function": "fibonnaci", // function name
+//                "properties": {
+//                    "data": "static",
+//                    "length": 20,
+//                    "field": "x",
+//                    "library" : "numbers",
+//                    "name": "fibonnaci_x"
+//                }
+//            }
+        ],
+        "scales": [
+            {
+                "name": "xscale",
+                "type": "linear",
+                "range": {"type": "range", "value": "width"},
+                "domain": {"data": "troops", "field": "long"}
+            },
+            {
+                "name": "yscale",
+                "type": "linear",
+                "range": {"type": "range", "value": [10,360]},
+                "domain": {"data": "cities", "field": "lat"}
+            },
+            {
+                "name": "x2scale",
+                "type": "linear",
+                 "range": {"type": "range", "value": [0,190]},
+                "domain": {"data": "cities", "field": "long"}
+            },
+            {
+                "name": "y2scale",
+                "type": "linear",
+                "range": {"type": "range", "value": "height"},
+                "domain": {"data": "cities", "field": "lat"}
+            },
+            {
+                "name": "colorscale",
+                "type": "category10",
+               "range": {"type": "range"},
+                "domain": {"data": "cities", "field": "city"}
+            },{
+                "name": "widthscale",
+                "type": "log",
+                "range": {"type": "range", "value": [3,19]},
+                "domain": {"data": "troops", "field": "survivors"}
+            }
+
+
+
+        ]
+        , "axes": {  
+		     "type": "coord_polar",   // put your type here first ..
+             "properties": [
+			  {
+                "type": "angle", 
+                "data": "cities", 
+				"field":"lat", // da el tdreg ele hyktab 3la circle
+                "angle":"yscale",//el angles el hrsmaha 34an el tdreg
+				"radius":190, // it's option for user to detrimine the radius of circle  but he should  aware about the height when he  use it , if the user don't write it it has defult value   
+                "grid": true,
+				"clockwise":false,
+				"font_color":"#336600",
+				"coord_color": "#fff5555"//"#ff6666"
+            },
+            {
+                "type": "radius", 
+                "data": "cities", 
+				"field":"long",// el kem ele hktbha 3la el axis 
+                "radius":"x2scale",//position  ele haktab 3ndha el kem 
+			    "position":20 ,//the distance between el axis  and diameter " has defult  value"
+                "grid": false
+            } ]
+        }
+        , "geom": [ 
+		/*{
+				"type": "Text", //hline
+                "data": "cities",
+                "properties": {
+				   "angle": "yscale",
+				   "distance":"x2scale", // 
+				   "text":"city",
+                 //  "fillColor" : "colorscale",
+                }
+				
+            },
+		{
+				"type": "Line", //hline
+                "data": "cities",
+                "properties": {
+				   "angle": "yscale",
+				   "distance":"x2scale", // 
+                   "fillColor" : "colorscale",
+                }
+				
+            }*/
+		
+		{
+				"type": "Point", //hline
+                "data": "cities",
+                "properties": {
+				   "angle": "yscale",
+				   "distance":"x2scale", // 
+                   "fillColor" : "colorscale",
+                }
+				
+            }
+		/*{
+				"type": "hline", //hline
+                "data": "cities",
+                "properties": {
+				   "intersect":"x2scale",//[1,8],// you can enter your yscale direct or your array []
+				   "color":"red"
+                }
+				
+            }
+		 
+		/*{
+		 "type": "Bar",
+                "data": "cities",
+                "properties": {
+                    "angle": "yscale",
+					"radius":"x2scale",
+                    "color" : "colorscale",
+                    "anticlockwise":true
+                }
+            }
+			*/
+/*		{
+                "type": "Pie",
+                "data": "cities",
+                "properties": {
+                    "angle": "yscale",
+                    "color" : "colorscale",
+                    "anticlockwise":true
+                }
+            }
+			*/]
+			,"guides":[
+           
+			  {
+         "type":"legend",
+		    "domain": {
+			    "type":"colour",//colour ,width scale,
+				"data":"cities",
+		       // "name": ["positive","negative",""], //array
+			   // "field": ["green","blue","yellow"], // name of field colour or width scale //array
+			   "field":"colorscale",
+			    "symbols":{
+				// "gome_type":"line", //test line
+				  //"line_weight":5,
+				  //"line_lenght":20,
+				  //"width":30,
+				 // "height":10,
+				 // __________________________________
+				   
+				   "gome_type":"point", //test point
+				   "width":20,
+				   "height":10,
+				   "radius":3,//array
+				  
+				   },
+				  //_________________________________
+				  //{
+				  /* "gome_type":"diamond", //test diamond
+				   "width":20,
+				   "height":20,
+				   "line_weight":4,//array*/
+				 
+				     
+				   },
+			"properties": { 
+		          "title":{
+				  "name":"key map",
+				  //"title_position":"center",
+				  "title_color":"red",
+				  "title_font":"16px Arial",
+				   },
+				   "position":{
+		           "x":400,
+				   "y":50,
+				   "stroke_width":0,
+				   "stroke_height":0,
+				  // "line_width":10,
+		            }
+					}
+			},
+			
+			]
+    };
+
+
+    GoG_Parser(specification);
+
+    d3.scale.log().domain([1000,4000]).range([35,350]);
+
+    //    scale({"type" : "log", "domain" : [1000,4000], "range" : [35,350]})
+    //
+    //    console.log(d3.scale.log().domain([1000,4000]).range([35,350])(2000));
+
+
+</script>
+</html>
