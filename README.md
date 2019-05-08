@@ -20,14 +20,14 @@ The only available source of getting help is through posting/checking issues.
 ```
 @misc {JSOL2016,
 author = "Waleed A. Yousef and
+          Hisham E. Mohammed and
+          Andrew A. Naguib and
           Yusuf M. Khalifa and
           Alaa M. Mamdoh and
           Eman A. Awad and
           Nada A. Shawky
           Shrouk T. AbdElrheem and
-          Sara G. Gaafar and
-          Hisham E. Mohammed and
-          Andrew A. Naguib",
+          Sara G. Gaafar", 
 title = "JSOL: JavaScript-based Open-source Library",
 year = "2016"}
 ```
