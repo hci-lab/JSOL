@@ -3,7 +3,7 @@
 </p>
 
 ## Overview
-The JavaScript Open-source Library _(JSOL)_ is a free open-source web-based visualization library provided under @@@ license; based on the [Grammar of Graphics](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448/ref=mt_hardcover?_encoding=UTF8&me=&qid=1477928463). The library uses JavaScript and [SVG](https://www.w3.org/Graphics/SVG/) for visualizing, and JavaScript Object Notation _(JSON)_ to interpret user's specifications.
+The JavaScript Open-source Library _(JSOL)_ is a free open-source web-based visualization library based on the Grammar of Graphics textbook by Wilkinson, Leland in 2005 which is published by Springer-Verlag (ISBN: 0387245448). The library uses JavaScript and [SVG](https://www.w3.org/Graphics/SVG/) for visualizing, and JavaScript Object Notation _(JSON)_ to interpret user's specifications.
 ## Installation
 You can start using JSOL by running:
 
@@ -29,7 +29,6 @@ author = "Waleed A. Yousef and
           Hisham E. Mohammed and
           Andrew A. Naguib",
 title = "JSOL: JavaScript-based Open-source Library",
-howpublished = "@@@",
 year = "2016"}
 ```
 
