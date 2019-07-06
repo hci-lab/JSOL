@@ -239,24 +239,8 @@ function examplesHandler() {
                     }
                 }
 
-                /*		{
-                "type": "Pie",
-                "data": "cities",
-                "properties": {
-                    "angle": "yscale",
-                    "color" : "colorscale",
-                    "anticlockwise":true
-                }
-            }
-			*/]
-            , /*"legend": {
-			      "title":"city",
-			      "field":"city",
-				  "color" : "colorscale",
-				  "data"  : "cities",
-				  "Xposition":250,
-				  "Yposition":190
-            }*/
+                ]
+            , 
 
 
         };
@@ -510,17 +494,7 @@ function examplesHandler() {
             ],
             "transform": [
 
-                /*{
-                "function": "groupby", // function name
-                "properties": {
-                    "data": "crimea",
-                    //"length": 20,
-                    "field":"x",
-					"yAxes":"y",
-					"y":"newY"
-
-                }
-            }*/
+                
             ],
 
             "scales": [
@@ -639,17 +613,7 @@ function examplesHandler() {
             ],
             "transform": [
 
-                /*{
-                "function": "groupby", // function name
-                "properties": {
-                    "data": "crimea",
-                    //"length": 20,
-                    "field":"x",
-					"yAxes":"y",
-					"y":"newY"
-
-                }
-            }*/
+                
             ],
 
             "scales": [
@@ -768,17 +732,7 @@ function examplesHandler() {
             ],
             "transform": [
 
-                /*{
-                "function": "groupby", // function name
-                "properties": {
-                    "data": "crimea",
-                    //"length": 20,
-                    "field":"x",
-					"yAxes":"y",
-					"y":"newY"
-
-                }
-            }*/
+                
             ],
 
             "scales": [
@@ -1261,24 +1215,8 @@ function examplesHandler() {
                     }
                 }
 
-                /*		{
-                "type": "Pie",
-                "data": "cities",
-                "properties": {
-                    "angle": "yscale",
-                    "color" : "colorscale",
-                    "anticlockwise":true
-                }
-            }
-			*/]
-            , /*"legend": {
-			      "title":"city",
-			      "field":"city",
-				  "color" : "colorscale",
-				  "data"  : "cities",
-				  "Xposition":250,
-				  "Yposition":190
-            }*/
+                ]
+            , 
 
 
         };
@@ -1406,27 +1344,9 @@ function examplesHandler() {
                     }
 
                 }
-                /*{
-				"type": "Line", //hline
-                "data": "cities",
-                "properties": {
-				   "angle": "yscale",
-				   "distance":"x2scale", //
-                   "fillColor" : "colorscale",
-                }
+                
 
-            }*/
-
-                /*{
-				"type": "Point", //hline
-                "data": "cities",
-                "properties": {
-				   "angle": "yscale",
-				   "distance":"x2scale", //
-                   "fillColor" : "colorscale",
-                }
-
-            }*/
+                
                 /* {
 				"type": "vline", //hline
                 "data": "cities",
@@ -1437,35 +1357,9 @@ function examplesHandler() {
 
             }*/
 
-                /*{
-		 "type": "Bar",
-                "data": "cities",
-                "properties": {
-                    "angle": "yscale",
-					"radius":"x2scale",
-                    "color" : "colorscale",
-                    "anticlockwise":true
-                }
-            }
-			*/
-                /*		{
-                "type": "Pie",
-                "data": "cities",
-                "properties": {
-                    "angle": "yscale",
-                    "color" : "colorscale",
-                    "anticlockwise":true
-                }
-            }
-			*/]
-            , /*"legend": {
-			      "title":"city",
-			      "field":"city",
-				  "color" : "colorscale",
-				  "data"  : "cities",
-				  "Xposition":250,
-				  "Yposition":190
-            }*/
+                
+                ]
+            , 
 
 
         };
@@ -3640,24 +3534,8 @@ json = {
             }
         }
 
-        /*		{
-                "type": "Pie",
-                "data": "cities",
-                "properties": {
-                    "angle": "yscale",
-                    "color" : "colorscale",
-                    "anticlockwise":true
-                }
-            }
-			*/]
-    , /*"legend": {
-			      "title":"city",
-			      "field":"city",
-				  "color" : "colorscale",
-				  "data"  : "cities",
-				  "Xposition":250,
-				  "Yposition":190
-            }*/
+        ]
+    , 
 
 
 };
