@@ -1,6 +1,12 @@
-function myFunction() {
-    var x = document.getElementById("mySelect").value;
-    if (x == "bar") {
+let json;
+
+const editor = new JSONEditor(container, options, json);
+
+function examplesHandler() {
+    let canvas;
+    let del;
+    var x = document.getElementById("examplesSelector").value;
+    if (x === "bar") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -123,16 +129,16 @@ function myFunction() {
         editor.set(json);
         //document.getElementById("canvas1").getContext('2d').translate(0,0);
         //document.getElementById("canvas1").getContext('2d').clearRect(0, 0, 1200, 500);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
-    } else if (x == "arc") {
+    } else if (x === "arc") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -257,17 +263,17 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
 
-    } else if (x == "stackted") {
+    } else if (x === "stackted") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -476,17 +482,17 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
 
-    } else if (x == "vline") {
+    } else if (x === "vline") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -605,17 +611,17 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
 
-    } else if (x == "hline") {
+    } else if (x === "hline") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -734,17 +740,17 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
 
-    } else if (x == "vbar") {
+    } else if (x === "vbar") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -872,17 +878,17 @@ function myFunction() {
         };
 
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
 
-    } else if (x == "hist") {
+    } else if (x === "hist") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -1009,17 +1015,17 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
 
-    } else if (x == "pie") {
+    } else if (x === "pie") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -1135,17 +1141,17 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
 
-    } else if (x == "pbar") {
+    } else if (x === "pbar") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -1279,17 +1285,17 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
 
-    } else if (x == "text") {
+    } else if (x === "text") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -1466,17 +1472,17 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
 
-    } else if (x == "yfacet") {
+    } else if (x === "yfacet") {
         json = {
             "id": "canvas1",
             "width": 700,
@@ -1610,16 +1616,16 @@ function myFunction() {
             ], "guides": []
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
-    } else if (x == "xfacet") {
+    } else if (x === "xfacet") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -1753,16 +1759,16 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
-    } else if (x == "image") {
+    } else if (x === "image") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -1981,16 +1987,16 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
-    } else if (x == "polar_parallel") {
+    } else if (x === "polar_parallel") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -2282,16 +2288,16 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
-    } else if (x == "parallel") {
+    } else if (x === "parallel") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -2576,16 +2582,16 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
-    } else if (x == "polar_point") {
+    } else if (x === "polar_point") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -2723,16 +2729,16 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
-    } else if (x == "hbar_facet") {
+    } else if (x === "hbar_facet") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -2911,16 +2917,16 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
-    } else if (x == "xyfacet") {
+    } else if (x === "xyfacet") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -3098,16 +3104,16 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
-    } else if (x == "parallel_facet") {
+    } else if (x === "parallel_facet") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -3336,16 +3342,16 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
         del.appendChild(canvas);
         GoG_Parser(json);
-    } else if (x == "point") {
+    } else if (x === "point") {
         json = {
             "id": "canvas1",
             "width": 750,
@@ -3505,10 +3511,10 @@ function myFunction() {
 
         };
         editor.set(json);
-        var del = document.getElementById("alaa");
+        del = document.getElementById("graph");
         //del.removeChild(del.childNodes[0]);
         del.innerHTML = "";
-        var canvas = document.createElement('canvas');
+        canvas = document.createElement('canvas');
         canvas.id = "canvas1";
         canvas.width = 750;
         canvas.height = 500;
@@ -3519,13 +3525,13 @@ function myFunction() {
 }
 
 // create the editor
-var container = document.getElementById('jsoneditor');
-var options = {
+const container = document.getElementById('jsoneditor');
+const options = {
     modes: ['text', 'code', 'tree', 'form', 'view'],
     mode: 'code',
     ace: ace
 };
-var json = {
+json = {
     "id": "canvas1",
     "width": 750,
     "height": 500,
@@ -3658,14 +3664,13 @@ var json = {
 
 };
 
-var editor = new JSONEditor(container, options, json);
 // get json
 document.getElementById('getJSON').onclick = function () {
-    var json = editor.get();
+    const json = editor.get();
     //alert(JSON.stringify(json, null, 2));
-    var del = document.getElementById("alaa");
+    const del = document.getElementById("graph");
     del.innerHTML = "";
-    var canvas = document.createElement('canvas');
+    const canvas = document.createElement('canvas');
     canvas.id = "canvas1";
     canvas.width = 750;
     canvas.height = 500;
