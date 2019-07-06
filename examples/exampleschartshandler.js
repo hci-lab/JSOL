@@ -1,7 +1,5 @@
 let json;
 
-const editor = new JSONEditor(container, options, json);
-
 function examplesHandler() {
     let canvas;
     let del;
@@ -16,7 +14,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "crimea",
-                    "values": "crimea-bar.csv",
+                    "values": "csv/crimea-bar.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -149,7 +147,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "troops",
-                    "values": "troops.csv",
+                    "values": "csv/troops.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -157,7 +155,7 @@ function examplesHandler() {
                 },
                 {
                     "name": "cities",
-                    "values": "cities.csv",
+                    "values": "csv/cities.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -283,7 +281,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "crimea",
-                    "values": "stacked.csv",
+                    "values": "csv/stacked.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -502,7 +500,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "crimea",
-                    "values": "VLcrimea.csv",
+                    "values": "csv/VLcrimea.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -631,7 +629,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "crimea",
-                    "values": "VLcrimea.csv",
+                    "values": "csv/VLcrimea.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -760,7 +758,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "crimea",
-                    "values": "crimea-bar.csv",
+                    "values": "csv/crimea-bar.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -898,7 +896,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "crimea",
-                    "values": "crimea-hist.csv",
+                    "values": "csv/crimea-hist.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -1036,7 +1034,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "troops",
-                    "values": "troops.csv",
+                    "values": "csv/troops.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -1044,7 +1042,7 @@ function examplesHandler() {
                 },
                 {
                     "name": "cities",
-                    "values": "cities.csv",
+                    "values": "csv/cities.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -1162,7 +1160,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "troops",
-                    "values": "troops.csv",
+                    "values": "csv/troops.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -1170,7 +1168,7 @@ function examplesHandler() {
                 },
                 {
                     "name": "cities",
-                    "values": "cities.csv",
+                    "values": "csv/cities.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -1306,7 +1304,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "troops",
-                    "values": "troops.csv",
+                    "values": "csv/troops.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -1314,7 +1312,7 @@ function examplesHandler() {
                 },
                 {
                     "name": "cities",
-                    "values": "cities.csv",
+                    "values": "csv/cities.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -1492,7 +1490,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "crimea",
-                    "values": "crimea-bar.csv",
+                    "values": "csv/crimea-bar.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -1635,7 +1633,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "crimea",
-                    "values": "crimea-bar.csv",
+                    "values": "csv/crimea-bar.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -1778,7 +1776,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "imageData",
-                    "values": "imageData.csv",
+                    "values": "csv/imageData.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -2006,7 +2004,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "crimea",
-                    "values": "crimea-parallel.csv",
+                    "values": "csv/crimea-parallel.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -2307,7 +2305,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "crimea",
-                    "values": "crimea-parallel.csv",
+                    "values": "csv/crimea-parallel.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -2602,7 +2600,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "troops",
-                    "values": "troops.csv",
+                    "values": "csv/troops.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -2610,7 +2608,7 @@ function examplesHandler() {
                 },
                 {
                     "name": "cities",
-                    "values": "cities.csv",
+                    "values": "csv/cities.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -2748,7 +2746,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "crimea",
-                    "values": "crimea-bar.csv",
+                    "values": "csv/crimea-bar.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -2936,7 +2934,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "crimea",
-                    "values": "crimea-bar.csv",
+                    "values": "csv/crimea-bar.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -3123,7 +3121,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "crimea",
-                    "values": "crimea-bar.csv",
+                    "values": "csv/crimea-bar.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -3361,7 +3359,7 @@ function examplesHandler() {
             "data": [
                 {
                     "name": "crimea",
-                    "values": "crimea-text.csv",
+                    "values": "csv/crimea-text.csv",
                     "format": {
                         "type": "csv"
                     }
@@ -3541,7 +3539,7 @@ json = {
     "data": [
         {
             "name": "troops",
-            "values": "troops.csv",
+            "values": "csv/troops.csv",
             "format": {
                 "type": "csv"
             }
@@ -3549,7 +3547,7 @@ json = {
         },
         {
             "name": "cities",
-            "values": "cities.csv",
+            "values": "csv/cities.csv",
             "format": {
                 "type": "csv"
             }
@@ -3664,6 +3662,7 @@ json = {
 
 };
 
+var editor = new JSONEditor(container, options, json);
 // get json
 document.getElementById('getJSON').onclick = function () {
     const json = editor.get();
