@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-	
+
 </head>
 <body>
-<canvas id="canvas1" width="1200" height="500"></canvas>
+<canvas height="500" id="canvas1" width="1200"></canvas>
 
 </body>
 <script src="datalib.min.js"></script>
@@ -38,17 +38,17 @@
         "data": [
             {
                 "name": "crimea",
-                "values" : "crimea-hist.csv",
-                "format" : {
-                    "type" : "csv"
+                "values": "crimea-hist.csv",
+                "format": {
+                    "type": "csv"
                 }
 
             },
-             
+
         ],
-		"transform": [
-          
-			{
+        "transform": [
+
+            {
                 //"lang": "R",    // function language
                 "function": "count", // function name
                 "properties": {
@@ -73,76 +73,79 @@
                 "range": {"type": "range", "value": "height"},
                 "domain": {"data": "crimea", "field": "Count"}//hist newY
             },
-			{
+            {
                 "name": "hscale",
                 "type": "linear",
                 "range": {"type": "range", "value": "height"},
                 "domain": {"data": "crimea", "field": "y"}
             },
-             
+
             {
                 "name": "colorscale",
                 "type": "category10",
-                "range": {"type": "range","value": ["#808080","#FF0000" ]},
+                "range": {"type": "range", "value": ["#808080", "#FF0000"]},
                 "domain": {"data": "crimea", "field": "c"}
-            },{
+            }, {
                 "name": "widthscale",
                 "type": "linear",
-                "range": {"type": "range", "value": [3,19]},
+                "range": {"type": "range", "value": [3, 19]},
                 "domain": {"data": "crimea", "field": "c"}
             }
 
 
+        ]
+        , "axes": {
+            "type": "coord_cartesian", 			 // put your type here first ..
+            // "type": "coord_flib",
+            "properties": [
+                {
+                    "type": "x", // x axis
+                    "data": "crimea", // scale for axis
+                    "field": "x",
+                    "orient": "bottom",
+                    "grid": true,
+                    "text": {"font": "15px tohma", "colour": "blue"},
+                    "annotation": {
+                        "title": "field X",
+                        "position": "middle",
+                        "font": "10px Arial",
+                        "colour": "blue"
+                    },//edge or middle}
+                    "transform": {
+                        "function": "pow", // function name
+                        "properties": {
+                            "power": 2,
+                            "name": "power"
 
-        ]
-           , "axes": {  
-		    "type": "coord_cartesian", 			 // put your type here first ..
-			// "type": "coord_flib",
-             "properties": [
-            {
-                "type": "x", // x axis
-                "data": "crimea", // scale for axis
-                "field": "x",
-                "orient": "bottom",
-		        "grid": true,
-				"text":{"font":"15px tohma","colour":"blue"},
-				"annotation":{"title":"field X",
-				"position":"middle",
-				"font":"10px Arial",
-				"colour":"blue"},//edge or middle}
-				"transform":{
-				"function": "pow", // function name
-                "properties": {
-				    "power":2,
-					"name":"power"
-				
-				}
-               
-				
-            }},
-            {
-                "type": "y", // y axis
-                "data": "crimea", // scale for axis
-                "field": "y",
-                "orient": "left",
-		        "grid": true,
-				"text":{"font":"10px tohma","colour":"blue"},
-				"annotation":{"title":"Field Y",
-				"position":"edge",
-				"font":"10px Arial",
-				"colour":" blue",
-				},//edge or middle}
-				"transform":{
-				"function": "pow", // function name
-                "properties": {
-				    "power":2,
-					"name":"power"
-				}
-               
-            }
-	    }
-        ]
-		}
+                        }
+
+
+                    }
+                },
+                {
+                    "type": "y", // y axis
+                    "data": "crimea", // scale for axis
+                    "field": "y",
+                    "orient": "left",
+                    "grid": true,
+                    "text": {"font": "10px tohma", "colour": "blue"},
+                    "annotation": {
+                        "title": "Field Y",
+                        "position": "edge",
+                        "font": "10px Arial",
+                        "colour": " blue",
+                    },//edge or middle}
+                    "transform": {
+                        "function": "pow", // function name
+                        "properties": {
+                            "power": 2,
+                            "name": "power"
+                        }
+
+                    }
+                }
+            ]
+        }
         , "geom": [
             {
                 "type": "Histogram",
@@ -150,153 +153,152 @@
                 "properties": {
                     "x": "xscale",//xscale
                     "y": "yscale",//yscale
-					//"dir":"vertical",
-                    "color" : "black",
-                    "width" : 3 ,
-					"fillColor":"green",
-					"border":100
-					/*"type": "StackedBar",
+                    //"dir":"vertical",
+                    "color": "black",
+                    "width": 3,
+                    "fillColor": "green",
+                    "border": 100
+                    /*"type": "StackedBar",
                     "data": "crimea",
                    "properties": {
                     "x": "xscale",
-					"y": "yscale",
-					"sort":"c",
-					"color" : "colorscale",
+                    "y": "yscale",
+                    "sort":"c",
+                    "color" : "colorscale",
                     "width" : 15 ,
-					"fillColor":"colorscale"
-				}
-				/*"type": "vline",
+                    "fillColor":"colorscale"
+                }
+                /*"type": "vline",
                 "data": "crimea",
                 "properties": {
-				    //"groupby" : "x",
-					//"sortby" :"yscale",
+                    //"groupby" : "x",
+                    //"sortby" :"yscale",
                    "x": "xscale",
                    "y": "yscale",
-				   "intersect":"yscale" // you can enter your yscale direct or your array []
-				   
-                }
-				*/
-            }
-			}
-             
-        ]
-			, "guides":[
-           
-			  {
-         "type":"legend",
-		   // "shape":[
-			 //{
-				   //"gome_type":"point", //test point
-				   //"radius":5,//array
-				   //"name":"shosho",
-				   //"colour":"green",
-				   //},
-				  //_________________________________
-				  //{
-				  // "gome_type":"diamond", //test diamond
-				 //  "width":20,
-				   //"height":20,
-				  // "line_weight":8,//array
-				 //   "name":"alaa",
-				   // "colour":"red",
-					//"fill":"white",
-				//   },
-				 //  {
-                 //"gome_type":"bar", //test bar
-				//  "width":20,
-				 // "height":10,
-				 // "line_weight":2,//array
-                   //"name":"doha",
-				   // "colour":"brown",	
-                   //"fill":"white",					
-                  // },
-                  //{
-				  //"gome_type":"line", //test line
-				  //"line_weight":8,
-				  //"line_lenght":40,
-				  //"width":20,
-				 // "height":10,
-				  // "name":"doha",
-				  // "colour":"black",	
-				  
-				  
-				  
-				//  }				   
-			//],
-		       "domain": {
-			    "type":"width",//colour ,width scale,
-				"data":"crimea",
-		       "name": ["positive","negative",""], //array
-			   // "field": ["green","blue","yellow"], // name of field colour or width scale //array
-			   "field":"widthscale",
-			    "symbols":{
-				// "gome_type":"line", //test line
-				  //"line_weight":5,
-				  //"line_lenght":20,
-				  //"width":30,
-				 // "height":10,
-				 // __________________________________
-				  "gome_type":"bar", //test bar
-				  "width":20,
-				  "height":10,
-				  "line_weight":2,//array
-				  //_________________________________
-				  // {
-				   //"gome_type":"point", //test point
-				   //"width":20,
-				   //"height":10,
-				   //"radius":3,//array
-				  
-				  // },
-				  //_________________________________
-				  //{
-				  /* "gome_type":"diamond", //test diamond
-				   "width":20,
-				   "height":20,
-				   "line_weight":4,//array*/
-				 
-				   
-				   }	   
-				   },
-			
-	      "properties": { 
-		          "title":{
-				  "name":"key map",
-				  //"title_position":"center",
-				  "title_color":"black",
-				  "title_font":"12px Arial",
-				   },
-				   "position":{
-		           "x":1040,
-				   "y":90,
-				   "stroke_width":100,
-				   "stroke_height":100,
-				  // "line_width":10,
-		            }
-					},
-				
-				},
-				{
-				"type":"text",
-				"properties":{
-				"label":"relation bettween x and y",
-				"font":"20px toham",
-				"colour":"blue",
-				 "position":{
-				    "x":500,
-				    "y":80
-					 }
-				},
-      }
- ]
+                   "intersect":"yscale" // you can enter your yscale direct or your array []
 
- 
+                }
+                */
+                }
+            }
+
+        ]
+        , "guides": [
+
+            {
+                "type": "legend",
+                // "shape":[
+                //{
+                //"gome_type":"point", //test point
+                //"radius":5,//array
+                //"name":"shosho",
+                //"colour":"green",
+                //},
+                //_________________________________
+                //{
+                // "gome_type":"diamond", //test diamond
+                //  "width":20,
+                //"height":20,
+                // "line_weight":8,//array
+                //   "name":"alaa",
+                // "colour":"red",
+                //"fill":"white",
+                //   },
+                //  {
+                //"gome_type":"bar", //test bar
+                //  "width":20,
+                // "height":10,
+                // "line_weight":2,//array
+                //"name":"doha",
+                // "colour":"brown",
+                //"fill":"white",
+                // },
+                //{
+                //"gome_type":"line", //test line
+                //"line_weight":8,
+                //"line_lenght":40,
+                //"width":20,
+                // "height":10,
+                // "name":"doha",
+                // "colour":"black",
+
+
+                //  }
+                //],
+                "domain": {
+                    "type": "width",//colour ,width scale,
+                    "data": "crimea",
+                    "name": ["positive", "negative", ""], //array
+                    // "field": ["green","blue","yellow"], // name of field colour or width scale //array
+                    "field": "widthscale",
+                    "symbols": {
+                        // "gome_type":"line", //test line
+                        //"line_weight":5,
+                        //"line_lenght":20,
+                        //"width":30,
+                        // "height":10,
+                        // __________________________________
+                        "gome_type": "bar", //test bar
+                        "width": 20,
+                        "height": 10,
+                        "line_weight": 2,//array
+                        //_________________________________
+                        // {
+                        //"gome_type":"point", //test point
+                        //"width":20,
+                        //"height":10,
+                        //"radius":3,//array
+
+                        // },
+                        //_________________________________
+                        //{
+                        /* "gome_type":"diamond", //test diamond
+                         "width":20,
+                         "height":20,
+                         "line_weight":4,//array*/
+
+
+                    }
+                },
+
+                "properties": {
+                    "title": {
+                        "name": "key map",
+                        //"title_position":"center",
+                        "title_color": "black",
+                        "title_font": "12px Arial",
+                    },
+                    "position": {
+                        "x": 1040,
+                        "y": 90,
+                        "stroke_width": 100,
+                        "stroke_height": 100,
+                        // "line_width":10,
+                    }
+                },
+
+            },
+            {
+                "type": "text",
+                "properties": {
+                    "label": "relation bettween x and y",
+                    "font": "20px toham",
+                    "colour": "blue",
+                    "position": {
+                        "x": 500,
+                        "y": 80
+                    }
+                },
+            }
+        ]
+
+
     };
 
 
     GoG_Parser(specification);
 
-   // d3.scale.log().domain([1000,4000]).range([35,350]);
+    // d3.scale.log().domain([1000,4000]).range([35,350]);
 
     //    scale({"type" : "log", "domain" : [1000,4000], "range" : [35,350]})
     //

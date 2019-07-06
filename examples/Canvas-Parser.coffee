@@ -5,11 +5,11 @@ class Line extends Canvas_Geometry
 
 Line::draw = (obj)->
   for i in obj
-    color = if (i.color is null || i.color is undefined )
+    color = if (i.color is null || i.color is undefined)
       "#FF0000"
     else
       i.color
-    width = if (i.width is null || i.width is undefined )
+    width = if (i.width is null || i.width is undefined)
       1
     else
       i.width
@@ -25,7 +25,6 @@ Line::draw = (obj)->
     lib.context.lineWidth = 1
 
 
-
 #"Area" : [{
 #  "points": [[10,30], [40,150], [70,100]],
 #  "color" : "black",
@@ -37,21 +36,21 @@ class Area extends Canvas_Geometry
 
 Area::draw = (obj)->
   for i in obj
-    color = if (i.color is null || i.color is undefined )
+    color = if (i.color is null || i.color is undefined)
       "#FF0000"
     else
       i.color
-    fillColor = if (i.fillColor is null || i.fillColor is undefined )
+    fillColor = if (i.fillColor is null || i.fillColor is undefined)
       "#ffffff"
     else
       i.fillColor
 
     lib.context.beginPath()
     lib.context.lineCap = "round"
-    lib.context.moveTo(i.points[0][0], i.height-i.margin)
+    lib.context.moveTo(i.points[0][0], i.height - i.margin)
     for k in i.points
-      lib.context.lineTo(k[0],k[1])
-    lib.context.lineTo(i.points[i.points.length-1][0],i.height-i.margin)
+      lib.context.lineTo(k[0], k[1])
+    lib.context.lineTo(i.points[i.points.length - 1][0], i.height - i.margin)
     lib.context.fillStyle = fillColor
     lib.context.fill()
     lib.context.strokeStyle = color
@@ -62,28 +61,22 @@ Area::draw = (obj)->
     lib.context.fillStyle = "#000000"
 
 
-      
-
-
-
 class Background extends Canvas_Geometry
 
 Background::draw = (value)->
   url = "http"
   if value.indexOf(url) > -1
-    lib.canvas.style.backgroundImage = 'url('+value+')'
+    lib.canvas.style.backgroundImage = 'url(' + value + ')'
     lib.canvas.style.backgroundSize = '100% 100%'
   else
     lib.canvas.style.backgroundColor = value
-
-
 
 
 class Diamond extends Canvas_Geometry
 
 Diamond::draw = (obj)->
   for i in obj
-    color = if (i.color is null || i.color is undefined )
+    color = if (i.color is null || i.color is undefined)
       "#FF0000"
     else
       i.color
@@ -91,11 +84,11 @@ Diamond::draw = (obj)->
     cursorx = 4
     cursory = 4
     lib.context.beginPath()
-    lib.context.moveTo(i.x, i.y-cursory)
-    lib.context.lineTo(i.x+cursorx, i.y)
-    lib.context.lineTo(i.x, i.y+cursory)
+    lib.context.moveTo(i.x, i.y - cursory)
+    lib.context.lineTo(i.x + cursorx, i.y)
+    lib.context.lineTo(i.x, i.y + cursory)
     lib.context.lineTo(i.x - cursorx, i.y)
-    lib.context.lineTo(i.x, i.y-cursory)
+    lib.context.lineTo(i.x, i.y - cursory)
     lib.context.fillStyle = color
     lib.context.fill()
     lib.context.strokeStyle = color
@@ -110,32 +103,32 @@ class Point extends Canvas_Geometry
 
 Point::draw = (obj) ->
   for i in obj
-    color = if (i.color is null || i.color is undefined )
+    color = if (i.color is null || i.color is undefined)
       "#000000"
     else
       i.color
-    fillColor = if (i.fillColor is null || i.fillColor is undefined )
+    fillColor = if (i.fillColor is null || i.fillColor is undefined)
       "#ffffff"
     else
       i.fillColor
-    linewidth = if (i.linewidth is null || i.linewidth is undefined )
+    linewidth = if (i.linewidth is null || i.linewidth is undefined)
       1
     else
       i.linewidth
-    radius = if (i.radius is null || i.radius is undefined )
+    radius = if (i.radius is null || i.radius is undefined)
       7
     else
       i.radius
-    anticlockwise = if (i.anticlockwise is null || i.anticlockwise is undefined )
+    anticlockwise = if (i.anticlockwise is null || i.anticlockwise is undefined)
       false
     else
       i.anticlockwise
-    startAngle = if (i.startAngle is null || i.startAngle is undefined )
+    startAngle = if (i.startAngle is null || i.startAngle is undefined)
       0
     else
       i.startAngle
 
-    endAngle = if (i.endAngle is null || i.endAngle is undefined )
+    endAngle = if (i.endAngle is null || i.endAngle is undefined)
       360
     else
       i.endAngle
@@ -166,7 +159,7 @@ Picture::Process = (obj) ->
     imageWidth = image.width
     imageHeight = image.height
     lib.context.save()
-    lib.context.translate(obj.x - (imageHeight/2), obj.y - (imageWidth/2))
+    lib.context.translate(obj.x - (imageHeight / 2), obj.y - (imageWidth / 2))
     lib.context.drawImage(image, 0, 0)
     lib.context.restore()
 
@@ -180,22 +173,21 @@ Text::draw = (obj)->
     lib.context.fillText(i.text, i.x, i.y)
 
 
-
 class Axes extends Canvas_Geometry
   #{type : "x" , orientation: "top", values : [27,54,81,108,135] , min: 5, max: 140, margin: 5, height: 240, width: 180, grid: true}
 Axes::draw = (obj) ->
   for i in obj
-    grid = if (i.grid is null || i.grid is undefined )
+    grid = if (i.grid is null || i.grid is undefined)
       false
     else
       i.grid
     if i.type == "x"
-      orientation = if (i.orientation is null || i.orientation is undefined )
+      orientation = if (i.orientation is null || i.orientation is undefined)
         "bottom"
       else
         i.orientation
     else
-      orientation = if (i.orientation is null || i.orientation is undefined )
+      orientation = if (i.orientation is null || i.orientation is undefined)
         "left"
       else
         i.orientation
@@ -213,32 +205,32 @@ Axes::draw = (obj) ->
 
       lib.context.stroke()
       lib.context.strokeStyle = "rgba(128, 128, 255, 0.5)"
-#      j = 0
-#      while j <= i.values.length
-#        currentY = i.margin + j / i.values.length * (i.height - (2 * i.margin))
-#        if i.grid == true
-#          lib.context.moveTo i.width - i.margin, currentY
-#          lib.context.lineTo i.margin, currentY
-#        lib.context.fillText(Math.ceil(i.min + ((i.max - i.min) / i.values.length) * (i.values.length - j)), 10, currentY + 4);
-#        j++
+      #      j = 0
+      #      while j <= i.values.length
+      #        currentY = i.margin + j / i.values.length * (i.height - (2 * i.margin))
+      #        if i.grid == true
+      #          lib.context.moveTo i.width - i.margin, currentY
+      #          lib.context.lineTo i.margin, currentY
+      #        lib.context.fillText(Math.ceil(i.min + ((i.max - i.min) / i.values.length) * (i.values.length - j)), 10, currentY + 4);
+      #        j++
       j = 0
       while j < i.values.length
-        #currentX = i.margin + j / i.values.length * (i.width - (2 * i.margin))
+#currentX = i.margin + j / i.values.length * (i.width - (2 * i.margin))
 
         vals = i.values.length - 1;
         axeslength = i.width - (2 * i.margin)
         #console.log(i.values.length - 1)
         #console.log(axeslength/vals)
-        currentX = (i.margin + (axeslength/vals) * j )
+        currentX = (i.margin + (axeslength / vals) * j)
         #console.log(currentX)
         if i.grid == true
           lib.context.moveTo currentX, i.margin
           lib.context.lineTo currentX, (i.height - i.margin)
         if i.orientation == "top"
-          lib.context.fillText((i.min + ((i.max - i.min) / (i.values.length-1)) * (j)).toFixed(2), currentX - 3,
-             i.margin / 2)
+          lib.context.fillText((i.min + ((i.max - i.min) / (i.values.length - 1)) * (j)).toFixed(2), currentX - 3,
+            i.margin / 2)
         else
-          lib.context.fillText((i.min + ((i.max - i.min) / (i.values.length-1)) * (j)).toFixed(2), currentX - 3,
+          lib.context.fillText((i.min + ((i.max - i.min) / (i.values.length - 1)) * (j)).toFixed(2), currentX - 3,
             (i.height - i.margin) + i.margin / 2)
         j++
 
@@ -255,38 +247,34 @@ Axes::draw = (obj) ->
 
       lib.context.stroke()
       lib.context.strokeStyle = "rgba(128, 128, 255, 0.5)"
-#      j = 0
-#      while j <= i.values.length
-#        currentX = i.margin + j / i.values.length * (i.width - (2 * i.margin))
-#        if i.grid == true
-#          lib.context.moveTo currentX, i.margin
-#          lib.context.lineTo currentX, (i.height - i.margin)
-#        lib.context.fillText(Math.ceil(i.min + ((i.max - i.min) / i.values.length) * (j)), currentX - 3,
-#          (i.height - i.margin) + i.margin / 2)
-#        j++
+      #      j = 0
+      #      while j <= i.values.length
+      #        currentX = i.margin + j / i.values.length * (i.width - (2 * i.margin))
+      #        if i.grid == true
+      #          lib.context.moveTo currentX, i.margin
+      #          lib.context.lineTo currentX, (i.height - i.margin)
+      #        lib.context.fillText(Math.ceil(i.min + ((i.max - i.min) / i.values.length) * (j)), currentX - 3,
+      #          (i.height - i.margin) + i.margin / 2)
+      #        j++
       j = 0
       while j < i.values.length
-        #currentY = i.margin + j / i.values.length * (i.height - (2 * i.margin))
+#currentY = i.margin + j / i.values.length * (i.height - (2 * i.margin))
         vals = i.values.length - 1;
         axeslength = i.height - (2 * i.margin)
-        currentY = (i.margin + (axeslength/vals) * j )
+        currentY = (i.margin + (axeslength / vals) * j)
 
         if i.grid == true
           lib.context.moveTo i.width - i.margin, currentY
           lib.context.lineTo i.margin, currentY
         if i.orientation == "right"
-          lib.context.fillText((i.min + ((i.max - i.min) / i.values.length) * (i.values.length - j)).toFixed(2), 10  + i.width - i.margin , currentY + 4);
+          lib.context.fillText((i.min + ((i.max - i.min) / i.values.length) * (i.values.length - j)).toFixed(2), 10 + i.width - i.margin, currentY + 4);
         else
           lib.context.fillText((i.min + ((i.max - i.min) / i.values.length) * (i.values.length - j)).toFixed(2), 10, currentY + 4);
         j++
 
 
-
       lib.context.stroke()
       lib.context.strokeStyle = "#000000"
-
-
-
 
 
 class Tooltip
@@ -307,12 +295,6 @@ Tooltip::draw = (value) ->
 #  .on("mouseout", Tooltip.mouseout)
 
 
-
-
-
-
-
-
 Tooltip::mouseover = ()->
 #  d3.select("body").append("div")
 #  .attr("class", "tooltip")
@@ -328,7 +310,6 @@ Tooltip::mousemove = () ->
 #  .attr("height", 200);
 
 
-
 Tooltip::mouseout = () ->
 #  d3.select("body").append("div")
 #  .attr("class", "tooltip")
@@ -342,8 +323,6 @@ Tooltip::getMousePos = (canvas, evt) ->
 #    x: evt.clientX - rect.left
 #    y: evt.clientY - rect.top
 #  return cords
-
-
 
 
 Canvas_Parse = (obj)->

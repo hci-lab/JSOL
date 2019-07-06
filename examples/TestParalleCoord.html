@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-	
+
 </head>
 <body>
-<canvas id="canvas1" width="1200" height="500"></canvas>
+<canvas height="500" id="canvas1" width="1200"></canvas>
 
 </body>
 <script src="datalib.min.js"></script>
@@ -24,399 +24,406 @@
 <script src="canvasjs.min.js"></script>
 <script src="Guides.js"></script>
 <script>
-     
-//n3mel scal 3a el counter  34an n3rf nersmo fegeom
+
+    //n3mel scal 3a el counter  34an n3rf nersmo fegeom
 
     var specification = {
-        "id": "canvas1",
-        "width": 1200,
-        "height": 500,
-        "margin": "",
-        "background": "rgba(170, 170, 170, 0.1)",
-        "data": [
-            {
-                "name": "crimea",
-                "values" : "crimea-parallel.csv",
-                "format" : {
-                    "type" : "csv"
-                }
+            "id": "canvas1",
+            "width": 1200,
+            "height": 500,
+            "margin": "",
+            "background": "rgba(170, 170, 170, 0.1)",
+            "data": [
+                {
+                    "name": "crimea",
+                    "values": "crimea-parallel.csv",
+                    "format": {
+                        "type": "csv"
+                    }
 
-            },
-             
-        ],
-		"transform": [
-          
-			/*{ 
-                "function": "groupby", // function name
-                "properties": {
+                },
+
+            ],
+            "transform": [
+
+                /*{
+                    "function": "groupby", // function name
+                    "properties": {
+                        "data": "crimea",
+                        //"length": 20,
+                        "field":"x",
+                        "yAxes":"y",
+                        "y":"newY"
+
+                    }
+                }*/
+            ],
+
+            "scales": [
+                {
+                    "name": "xscale",
+                    "type": "linear",
+                    "range": {"type": "range", "value": [0, 330]},
+                    "domain": {"data": "crimea", "field": "name"}
+                },
+                {
+                    "name": "yscale",
+                    "type": "linear",
+                    "range": {"type": "range", "value": "height"},//
+                    "domain": {"data": "crimea", "field": "economy (mpg)"}//hist newY
+                },
+                {
+                    "name": "y1scale",
+                    "type": "linear",
+                    "range": {"type": "range", "value": "height"},//
+                    "domain": {"data": "crimea", "field": "cylinders"}//hist newY
+                },//name,economy (mpg),cylinders,displacement (cc),power (hp),weight (lb),0-60 mph (s),year
+                {
+                    "name": "y2scale",
+                    "type": "linear",
+                    "range": {"type": "range", "value": "height"},//
+                    "domain": {"data": "crimea", "field": "displacement (cc)"}//hist newY
+                },
+                {
+                    "name": "y3scale",
+                    "type": "linear",
+                    "range": {"type": "range", "value": "height"},//
+                    "domain": {"data": "crimea", "field": "power (hp)"}//hist newY
+                },
+                {
+                    "name": "y4scale",
+                    "type": "linear",
+                    "range": {"type": "range", "value": "height"},//
+                    "domain": {"data": "crimea", "field": "weight (lb)"}//hist newY
+                }
+                ,
+                {
+                    "name": "y5scale",
+                    "type": "linear",
+                    "range": {"type": "range", "value": "height"},//
+                    "domain": {"data": "crimea", "field": "0-60 mph (s)"}//hist newY
+                }
+                ,
+                {
+                    "name": "y6scale",
+                    "type": "linear",
+                    "range": {"type": "range", "value": "height"},//
+                    "domain": {"data": "crimea", "field": "year"}//hist newY
+                },
+                {
+                    "name": "hscale",
+                    "type": "linear",
+                    "range": {"type": "range", "value": "height"},
+                    "domain": {"data": "crimea", "field": "year"}
+                },
+
+                {
+                    "name": "colorscale",
+                    "type": "category10",
+                    "range": {"type": "range"},
+                    "domain": {"data": "crimea", "field": "year"}
+                },
+                {
+                    "name": "widthscale",
+                    "type": "log",
+                    "range": {"type": "range", "value": [3, 19]},
+                    "domain": {"data": "crimea", "field": "year"}
+                }
+            ]
+            // "axes":"x" //x or y or both
+
+            , "axes": {
+                "type": "coord_parallel", 			 // put your type here first ..
+                // "type": "coord_flib",
+
+                "properties": [
+                    //name,economy (mpg),cylinders,displacement (cc),power (hp),weight (lb),0-60 mph (s),year
+                    /*{
+                     "type": "y", // y axis
+                     "data": "crimea", // scale for axis
+                     "field": "xscale",
+                     "orient": "left",
+                     "grid": false,
+                     "text":{"font":"10px tohma","colour":"blue"},
+                     "annotation":{"title":"name",
+                     "position":"edge",
+                     "font":"10px Arial",
+                     "colour":" blue",
+                    },//edge or middle}
+                    "transform":{
+                    "function": "pow", // function name
+                    "properties": {
+                    "power":2,
+                    "name":"power"
+                    }
+
+                 }
+                },
+       */
+                    {
+                        "type": "y", // y axis
+                        "data": "crimea", // scale for axis
+                        "field": "economy (mpg)",
+                        "orient": "left",
+                        "grid": false,
+                        "text": {"font": "10px tohma", "colour": "blue"},
+                        "annotation": {
+                            "title": "economy (mpg)",
+                            "position": "edge",
+                            "font": "10px Arial",
+                            "colour": " blue",
+                        },//edge or middle}
+                        "transform": {
+                            "function": "pow", // function name
+                            "properties": {
+                                "power": 2,
+                                "name": "power"
+
+                            }
+
+                        }
+                    },
+                    {
+                        "type": "y", // y axis
+                        "data": "crimea", // scale for axis
+                        "field": "cylinders",
+                        "orient": "left",
+                        "grid": false,
+                        "text": {"font": "10px tohma", "colour": "blue"},
+                        "annotation": {
+                            "title": "cylinders",
+                            "position": "edge",
+                            "font": "10px Arial",
+                            "colour": " blue",
+                        },//edge or middle}
+                        "transform": {
+                            "function": "pow", // function name
+                            "properties": {
+                                "power": 2,
+                                "name": "power"
+                            }
+
+                        }
+                    },
+                    {
+                        "type": "y", // y axis
+                        "data": "crimea", // scale for axis
+                        "field": "displacement (cc)",
+                        "orient": "left",
+                        "grid": false,
+                        "text": {"font": "10px tohma", "colour": "blue"},
+                        "annotation": {
+                            "title": "displacement (cc)",
+                            "position": "edge",
+                            "font": "10px Arial",
+                            "colour": " blue",
+                        },//edge or middle}
+                        "transform": {
+                            "function": "pow", // function name
+                            "properties": {
+                                "power": 2,
+                                "name": "power"
+                            }
+
+                        }
+                    },
+                    {
+                        "type": "y", // y axis
+                        "data": "crimea", // scale for axis
+                        "field": "power (hp)",
+                        "orient": "left",
+                        "grid": false,
+                        "text": {"font": "10px tohma", "colour": "blue"},
+                        "annotation": {
+                            "title": "power (hp)",
+                            "position": "edge",
+                            "font": "10px Arial",
+                            "colour": " blue",
+                        },//edge or middle}
+                        "transform": {
+                            "function": "pow", // function name
+                            "properties": {
+                                "power": 2,
+                                "name": "power"
+                            }
+
+                        }
+                    },
+                    {
+                        "type": "y", // y axis
+                        "data": "crimea", // scale for axis
+                        "field": "weight (lb)",
+                        "orient": "left",
+                        "grid": false,
+                        "text": {"font": "10px tohma", "colour": "blue"},
+                        "annotation": {
+                            "title": "weight (lb)",
+                            "position": "edge",
+                            "font": "10px Arial",
+                            "colour": " blue",
+                        },//edge or middle}
+                        "transform": {
+                            "function": "pow", // function name
+                            "properties": {
+                                "power": 2,
+                                "name": "power"
+                            }
+
+                        }
+                    },
+                    {
+                        "type": "y", // y axis
+                        "data": "crimea", // scale for axis
+                        "field": "0-60 mph (s)",
+                        "orient": "left",
+                        "grid": false,
+                        "text": {"font": "10px tohma", "colour": "blue"},
+                        "annotation": {
+                            "title": "0-60 mph (s)",
+                            "position": "edge",
+                            "font": "10px Arial",
+                            "colour": " blue",
+                        },//edge or middle}
+                        "transform": {
+                            "function": "pow", // function name
+                            "properties": {
+                                "power": 2,
+                                "name": "power"
+                            }
+
+                        }
+                    },
+                    {
+                        "type": "y", // y axis
+                        "data": "crimea", // scale for axis
+                        "field": "year",
+                        "orient": "left",
+                        "grid": false,
+                        "text": {"font": "10px tohma", "colour": "blue"},
+                        "annotation": {
+                            "title": "year",
+                            "position": "edge",
+                            "font": "10px Arial",
+                            "colour": " blue",
+                        },//edge or middle}
+                        "transform": {
+                            "function": "pow", // function name
+                            "properties": {
+                                "power": 2,
+                                "name": "power"
+                            }
+
+                        }
+                    }
+                ]
+            }
+            , "geom": [
+                {
+                    "type": "Line", //hline
                     "data": "crimea",
-                    //"length": 20,
-                    "field":"x",
-					"yAxes":"y",
-					"y":"newY"
-                   
+                    "properties": {
+                        // "x": "xscale",//xscale
+                        "y": ["yscale", "y1scale", "y2scale", "y3scale", "y4scale", "y5scale", "y6scale"],//yscale
+                        "color": "colorscale",
+                    }
+
                 }
-            }*/
-        ],
-       
-        "scales": [
-            {
-                "name": "xscale",
-                "type": "linear",
-                "range": {"type": "range", "value": [0,330]},
-                "domain": {"data": "crimea", "field": "name"}
-            },
-            {
-                "name": "yscale",
-                "type": "linear",
-                 "range": {"type": "range", "value":"height"},//
-                "domain": {"data": "crimea", "field": "economy (mpg)"}//hist newY
-            },
-            {
-                "name": "y1scale",
-                "type": "linear",
-                 "range": {"type": "range", "value":"height"},//
-                "domain": {"data": "crimea", "field": "cylinders"}//hist newY
-            },//name,economy (mpg),cylinders,displacement (cc),power (hp),weight (lb),0-60 mph (s),year
-            {
-                "name": "y2scale",
-                "type": "linear",
-                 "range": {"type": "range", "value":"height"},//
-                "domain": {"data": "crimea", "field": "displacement (cc)"}//hist newY
-            },
-			  {
-                "name": "y3scale",
-                "type": "linear",
-                 "range": {"type": "range", "value":"height"},//
-                "domain": {"data": "crimea", "field": "power (hp)"}//hist newY
-            },
-			  {
-                "name": "y4scale",
-                "type": "linear",
-                 "range": {"type": "range", "value":"height"},//
-                "domain": {"data": "crimea", "field": "weight (lb)"}//hist newY
-            }
-			,
-			  {
-                "name": "y5scale",
-                "type": "linear",
-                 "range": {"type": "range", "value":"height"},//
-                "domain": {"data": "crimea", "field": "0-60 mph (s)"}//hist newY
-            }
-			,
-			  {
-                "name": "y6scale",
-                "type": "linear",
-                 "range": {"type": "range", "value":"height"},//
-                "domain": {"data": "crimea", "field": "year"}//hist newY
-            },
-			{
-                "name": "hscale",
-                "type": "linear",
-                "range": {"type": "range", "value": "height"},
-                "domain": {"data": "crimea", "field": "year"}
-            },
-             
-           {
-                "name": "colorscale",
-                "type": "category10",
-				"range": {"type":"range"},
-                "domain": {"data": "crimea", "field": "year"}
-            },
-			{
-                "name": "widthscale",
-                "type": "log",
-                "range": {"type": "range", "value": [3,19]},
-                "domain": {"data": "crimea", "field": "year"}
-            }
-        ]
-	        // "axes":"x" //x or y or both
-         
-        , "axes": {  
-		    "type": "coord_parallel", 			 // put your type here first ..
-			// "type": "coord_flib",
-			 
-             "properties": [
-			 //name,economy (mpg),cylinders,displacement (cc),power (hp),weight (lb),0-60 mph (s),year
-               /*{
-                "type": "y", // y axis
-                "data": "crimea", // scale for axis
-                "field": "xscale",
-                "orient": "left",
-                "grid": false,
-                "text":{"font":"10px tohma","colour":"blue"},
-                "annotation":{"title":"name",
-                "position":"edge",
-                "font":"10px Arial",
-                "colour":" blue",
-               },//edge or middle}
-               "transform":{
-               "function": "pow", // function name
-               "properties": {
-               "power":2,
-               "name":"power"
-               }
-                  
-            }
-           }, 
-  */
-{
-                "type": "y", // y axis
-                "data": "crimea", // scale for axis
-                "field": "economy (mpg)",
-                "orient": "left",
-          "grid": false,
-    "text":{"font":"10px tohma","colour":"blue"},
-    "annotation":{"title":"economy (mpg)",
-    "position":"edge",
-    "font":"10px Arial",
-    "colour":" blue",
-    },//edge or middle}
-    "transform":{
-    "function": "pow", // function name
-                "properties": {
-        "power":2,
-     "name":"power"
-	 
-    }
-               
-            }
-     },
-  {
-                "type": "y", // y axis
-                "data": "crimea", // scale for axis
-                "field": "cylinders",
-                "orient": "left",
-          "grid": false,
-    "text":{"font":"10px tohma","colour":"blue"},
-    "annotation":{"title":"cylinders",
-    "position":"edge",
-    "font":"10px Arial",
-    "colour":" blue",
-    },//edge or middle}
-    "transform":{
-    "function": "pow", // function name
-                "properties": {
-        "power":2,
-     "name":"power"
-    }
-               
-            }
-     },
-  {
-                "type": "y", // y axis
-                "data": "crimea", // scale for axis
-                "field": "displacement (cc)",
-                "orient": "left",
-          "grid": false,
-    "text":{"font":"10px tohma","colour":"blue"},
-    "annotation":{"title":"displacement (cc)",
-    "position":"edge",
-    "font":"10px Arial",
-    "colour":" blue",
-    },//edge or middle}
-    "transform":{
-    "function": "pow", // function name
-                "properties": {
-        "power":2,
-     "name":"power"
-    }
-               
-            }
-     },
-	 {
-                "type": "y", // y axis
-                "data": "crimea", // scale for axis
-                "field": "power (hp)",
-                "orient": "left",
-                "grid": false,
-                "text":{"font":"10px tohma","colour":"blue"},
-                "annotation":{"title":"power (hp)",
-                "position":"edge",
-                "font":"10px Arial",
-                "colour":" blue",
-               },//edge or middle}
-               "transform":{
-               "function": "pow", // function name
-               "properties": {
-               "power":2,
-               "name":"power"
-               }
-                  
-            }
-           },
-		    {
-                "type": "y", // y axis
-                "data": "crimea", // scale for axis
-                "field": "weight (lb)",
-                "orient": "left",
-                "grid": false,
-                "text":{"font":"10px tohma","colour":"blue"},
-                "annotation":{"title":"weight (lb)",
-                "position":"edge",
-                "font":"10px Arial",
-                "colour":" blue",
-               },//edge or middle}
-               "transform":{
-               "function": "pow", // function name
-               "properties": {
-               "power":2,
-               "name":"power"
-               }
-                  
-            }
-           },
-		   {
-                "type": "y", // y axis
-                "data": "crimea", // scale for axis
-                "field": "0-60 mph (s)",
-                "orient": "left",
-                "grid": false,
-                "text":{"font":"10px tohma","colour":"blue"},
-                "annotation":{"title":"0-60 mph (s)",
-                "position":"edge",
-                "font":"10px Arial",
-                "colour":" blue",
-               },//edge or middle}
-               "transform":{
-               "function": "pow", // function name
-               "properties": {
-               "power":2,
-               "name":"power"
-               }
-                  
-            }
-           },
-		   {
-                "type": "y", // y axis
-                "data": "crimea", // scale for axis
-                "field": "year",
-                "orient": "left",
-                "grid": false,
-                "text":{"font":"10px tohma","colour":"blue"},
-                "annotation":{"title":"year",
-                "position":"edge",
-                "font":"10px Arial",
-                "colour":" blue",
-               },//edge or middle}
-               "transform":{
-               "function": "pow", // function name
-               "properties": {
-               "power":2,
-               "name":"power"
-               }
-                  
-            }
-           }
-        ]
-		}
-        , "geom": [
-		     {
-                  "type": "Line", //hline
-                  "data": "crimea",
-                  "properties": {
-                   // "x": "xscale",//xscale
-                    "y":["yscale","y1scale","y2scale","y3scale","y4scale","y5scale","y6scale"],//yscale 
-                  "color" : "colorscale",
+                /* {
+                     "type": "Bar",
+                     "data": "crimea",
+                     "properties": {
+                         "x": "xscale",//xscale
+                         "y": "yscale",//yscale
+                         //"dir":"vertical",
+                         "color" : "colorscale",
+                         "width" : 3 ,
+                         "fillColor":"rgba(170, 170, 170, 0.1)",
+                         "border":100
+                         /*"type": "StackedBar",
+                         "data": "crimea",
+                        "properties": {
+                         "x": "xscale",
+                         "y": "yscale",
+                         "sort":"c",
+                         "color" : "colorscale",
+                         "width" : 15 ,
+                         "fillColor":"colorscale"
+                     }
+                     /*"type": "vline",
+                     "data": "crimea",
+                     "properties": {
+                         //"groupby" : "x",
+                         //"sortby" :"yscale",
+                        "x": "xscale",
+                        "y": "yscale",
+                        "intersect":"yscale" // you can enter your yscale direct or your array []
+
+                     }
+                     */
+                //}
+                //}*/
+
+            ], "guides": [
+
+                {
+                    "type": "legend",
+                    "domain": {
+                        "type": "colour",//colour ,width scale,
+                        "data": "crimea",
+                        // "name": ["positive","negative",""], //array
+                        // "field": ["green","blue","yellow"], // name of field colour or width scale //array
+                        "field": "colorscale",
+                        "symbols": {
+                            "gome_type": "line", //test line
+                            "line_weight": 2,
+                            "line_lenght": 20,
+                            "width": 30,
+                            "height": 10,
+
+                            //_________________________________
+                            // {
+                            //"gome_type":"point", //test point
+                            //"width":20,
+                            //"height":10,
+                            //"radius":3,//array
+
+                            // },
+                            //_________________________________
+                            //{
+                            /* "gome_type":"diamond", //test diamond
+                             "width":20,
+                             "height":20,
+                             "line_weight":4,//array*/
+
+
+                        }
+                    },
+
+                    "properties": {
+                        "title": {
+                            "name": "key map",
+                            //"title_position":"center",
+                            "title_color": "black",
+                            "title_font": "12px Arial",
+                        },
+                        "position": {
+                            "x": 1250,
+                            "y": 50,
+                            "stroke_width": 120,
+                            "stroke_height": 300,
+                            // "line_width":10,
+                        }
+                    },
+
                 }
-    
-            }
-           /* {
-                "type": "Bar",
-                "data": "crimea",
-                "properties": {
-                    "x": "xscale",//xscale
-                    "y": "yscale",//yscale
-					//"dir":"vertical",
-                    "color" : "colorscale",
-                    "width" : 3 ,
-					"fillColor":"rgba(170, 170, 170, 0.1)",
-					"border":100
-					/*"type": "StackedBar",
-                    "data": "crimea",
-                   "properties": {
-                    "x": "xscale",
-					"y": "yscale",
-					"sort":"c",
-					"color" : "colorscale",
-                    "width" : 15 ,
-					"fillColor":"colorscale"
-				}
-				/*"type": "vline",
-                "data": "crimea",
-                "properties": {
-				    //"groupby" : "x",
-					//"sortby" :"yscale",
-                   "x": "xscale",
-                   "y": "yscale",
-				   "intersect":"yscale" // you can enter your yscale direct or your array []
-				   
-                }
-				*/
-            //}
-			//}*/
-             
-        ], "guides":[
-           
-			  {
-         "type":"legend",
-		       "domain": {
-			    "type":"colour",//colour ,width scale,
-				"data":"crimea",
-		       // "name": ["positive","negative",""], //array
-			   // "field": ["green","blue","yellow"], // name of field colour or width scale //array
-			   "field":"colorscale",
-			    "symbols":{
-				 "gome_type":"line", //test line
-				  "line_weight":2,
-				  "line_lenght":20,
-				  "width":30,
-				  "height":10,
-				
-				  //_________________________________
-				  // {
-				   //"gome_type":"point", //test point
-				   //"width":20,
-				   //"height":10,
-				   //"radius":3,//array
-				  
-				  // },
-				  //_________________________________
-				  //{
-				  /* "gome_type":"diamond", //test diamond
-				   "width":20,
-				   "height":20,
-				   "line_weight":4,//array*/
-				 
-				   
-				   }	   
-				   },
-			
-	      "properties": { 
-		          "title":{
-				  "name":"key map",
-				  //"title_position":"center",
-				  "title_color":"black",
-				  "title_font":"12px Arial",
-				   },
-				   "position":{
-		           "x":1250,
-				   "y":50,
-				   "stroke_width":120,
-				   "stroke_height":300,
-				  // "line_width":10,
-		            }
-					},
-				
-				}
- ]
- }
-;
+            ]
+        }
+    ;
 
 
     GoG_Parser(specification);
 
-   // d3.scale.log().domain([1000,4000]).range([35,350]);
+    // d3.scale.log().domain([1000,4000]).range([35,350]);
 
     //    scale({"type" : "log", "domain" : [1000,4000], "range" : [35,350]})
     //

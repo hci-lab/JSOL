@@ -62,44 +62,44 @@
 //    ]
 //
 //};
-var lib = {};;
+var lib = {};
 var GoG_Parser;
 
-GoG_Parser = function(obj) {
-  var key, value;
-  lib.GoG_JSON = {};
-  lib.Canvas_JSON = {};
-  /* if(obj.id==""){
-	  can=document.createElement("canvas");
-	  can.id="dcan";
-	  obj.id=can.id;
-	  
-  } */
-  lib.Canvas_JSON.id =obj.id;
-  lib.Canvas_JSON.Background = obj.background;
-  lib.GoG_JSON.width = obj.width;
-  lib.GoG_JSON.height = obj.height;
-  if (obj.margin == ""){
-	 obj.margin=60; 
-  }
-     
-  lib.GoG_JSON.margin = obj.margin;
-  lib.data = new Data();
-  lib.transform = new Transform();
-  lib.scales = new Scale();
-  lib.axes = new axes();
-  lib.geom = new Geom();
-  lib.define = new Define();
-  lib.guides=new guides();
-  for (key in obj) {
-    value = obj[key];
-    if (key === "width" || key === "height" || key === "margin" || key === "background" || key === "id") {
-      continue;
-    } else {
-      lib[key]["process"](value);
+GoG_Parser = function (obj) {
+    var key, value;
+    lib.GoG_JSON = {};
+    lib.Canvas_JSON = {};
+    /* if(obj.id==""){
+        can=document.createElement("canvas");
+        can.id="dcan";
+        obj.id=can.id;
+
+    } */
+    lib.Canvas_JSON.id = obj.id;
+    lib.Canvas_JSON.Background = obj.background;
+    lib.GoG_JSON.width = obj.width;
+    lib.GoG_JSON.height = obj.height;
+    if (obj.margin == "") {
+        obj.margin = 60;
     }
-  }
-  return Canvas_Parse(lib.Canvas_JSON);
+
+    lib.GoG_JSON.margin = obj.margin;
+    lib.data = new Data();
+    lib.transform = new Transform();
+    lib.scales = new Scale();
+    lib.axes = new axes();
+    lib.geom = new Geom();
+    lib.define = new Define();
+    lib.guides = new guides();
+    for (key in obj) {
+        value = obj[key];
+        if (key === "width" || key === "height" || key === "margin" || key === "background" || key === "id") {
+
+        } else {
+            lib[key]["process"](value);
+        }
+    }
+    return Canvas_Parse(lib.Canvas_JSON);
 };
 
 //# sourceMappingURL=GoG-Parser.js.map

@@ -15,8 +15,6 @@
 class axes
 
 
-
-
 axes::process = (obj) ->
   axesArray = []
   for i in obj
@@ -26,12 +24,12 @@ axes::process = (obj) ->
       for key,value of j
         if(key == i.field)
           dataArray.push(value)
-		  break
-        else
-          continue
+    break
+    else
+    continue
 
     dataArray.sort(d3.ascending)
-#    dataArray = dataArray.filter( onlyUnique )
+    #    dataArray = dataArray.filter( onlyUnique )
     if i.hasOwnProperty("ticks")
       axesObj["values"] = new Array(i.ticks)
     else
@@ -50,5 +48,5 @@ axes::process = (obj) ->
   lib.Canvas_JSON["Axes"] = axesArray
 
 
-onlyUnique = ( value, index, self)->
+onlyUnique = (value, index, self)->
   return self.indexOf(value) is index

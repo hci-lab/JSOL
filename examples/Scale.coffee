@@ -3,15 +3,15 @@ class Scale
 
 
   ##{
-##           "name": "xscale", // scale name
-##            "type": "linear", // scale type
-##            "range": "width", // chart width
-##            "domain": {
-##                "data": "static",
-##                "field": "x"
-##            }
-##        }
-#  {"type" : "linear", "domain" : [1000,4000], "range" : [35,350]}
+  ##           "name": "xscale", // scale name
+  ##            "type": "linear", // scale type
+  ##            "range": "width", // chart width
+  ##            "domain": {
+  ##                "data": "static",
+  ##                "field": "x"
+  ##            }
+  ##        }
+  #  {"type" : "linear", "domain" : [1000,4000], "range" : [35,350]}
   #scale = (obj) ->
   #    scaleobj = d3.scale[obj.type]()
   #    scaleobj = scaleobj["domain"](obj.domain)
@@ -20,16 +20,15 @@ class Scale
 
 
 Scale::process = (obj)->
-
   dataArray = []
   for i in obj
     for j in lib.GoG_JSON[i.domain.data]
       for key,value of j
         if(key == i.domain.field)
           dataArray.push(value)
-		  break
-        else
-          continue
+    break
+    else
+    continue
     domainArray = [d3.min(dataArray), d3.max(dataArray)]
     rangeArray = []
     if Array.isArray(i.range)
@@ -46,26 +45,24 @@ Scale::process = (obj)->
       rangeArray.push(maxRange)
 
     scaleObj =
-      type : i.type
-      domain : domainArray
-      range : rangeArray
+      type: i.type
+      domain: domainArray
+      range: rangeArray
 
     scaleArray = Scale::scale(scaleObj)
 
     for c in lib.GoG_JSON[i.domain.data]
       for key1,value1 of c
-	  if(key1==i.domain.field)
-        c[i.name] = scaleArray(c[i.domain.field])
-		break
+  if(key1 == i.domain.field)
+    c[i.name] = scaleArray(c[i.domain.field])
+  break
 
-    dataArray = []
-    domainArray = []
+  dataArray = []
+  domainArray = []
   return
 
 
-
-
 Scale::scale = (obj) ->
-    scaleobj = d3.scale[obj.type]()
-    scaleobj = scaleobj["domain"](obj.domain)
-    scaleobj = scaleobj["range"](obj.range)
+  scaleobj = d3.scale[obj.type]()
+  scaleobj = scaleobj["domain"](obj.domain)
+  scaleobj = scaleobj["range"](obj.range)

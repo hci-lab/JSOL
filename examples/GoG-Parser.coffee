@@ -6,7 +6,6 @@
 #    console.log scaleobj(2000)
 
 
-
 `//specification = {
 //    "id" : "canvas_1"
 //    "width": 600,
@@ -74,7 +73,6 @@
 
 `var lib = {}`
 GoG_Parser = (obj) ->
-
   lib.GoG_JSON = {}
   lib.Canvas_JSON = {}
   lib.Canvas_JSON.id = obj.id
@@ -82,7 +80,7 @@ GoG_Parser = (obj) ->
   lib.GoG_JSON.width = obj.width
   lib.GoG_JSON.height = obj.height
   if obj.margin == ""
-     obj.margin=60
+    obj.margin = 60
   lib.GoG_JSON.margin = obj.margin
   lib.data = new Data()
   lib.transform = new Transform()
@@ -90,10 +88,10 @@ GoG_Parser = (obj) ->
   lib.axes = new axes()
   lib.geom = new Geom()
 for key,value of obj
-    if key == "width" || key =="height" || key == "margin" || key == "background" || key == "id"
-      continue
-    else
-      lib[key]["process"](value)
+  if key == "width" || key == "height" || key == "margin" || key == "background" || key == "id"
+    continue
+  else
+    lib[key]["process"](value)
 
 
  

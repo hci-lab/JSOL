@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<canvas id="canvas1" width="1200" height="500"></canvas>
+<canvas height="500" id="canvas1" width="1200"></canvas>
 
 </body>
 <script src="datalib.min.js"></script>
@@ -32,21 +32,21 @@
         "height": 500,
         "margin": 60,
         "background": "rgba(170, 170, 170, 0.1)",
-        "define": ["function testeval1(){ return 1;}","var GLOBAL = 1;"],
+        "define": ["function testeval1(){ return 1;}", "var GLOBAL = 1;"],
         "data": [
             {
                 "name": "troops",
-                "values" : "troops.csv",
-                "format" : {
-                    "type" : "csv"
+                "values": "troops.csv",
+                "format": {
+                    "type": "csv"
                 }
 
             },
             {
                 "name": "cities",
-                "values" : "cities.csv",
-                "format" : {
-                    "type" : "csv"
+                "values": "cities.csv",
+                "format": {
+                    "type": "csv"
                 }
 
             }
@@ -74,13 +74,13 @@
             {
                 "name": "yscale",
                 "type": "linear",
-                "range": {"type": "range", "value": [10,90]},
+                "range": {"type": "range", "value": [10, 90]},
                 "domain": {"data": "cities", "field": "lat"}
             },
             {
                 "name": "x2scale",
                 "type": "linear",
-                "range": {"type": "range", "value": [0,190]},
+                "range": {"type": "range", "value": [0, 190]},
                 "domain": {"data": "cities", "field": "long"}
             },
             {
@@ -92,178 +92,176 @@
             {
                 "name": "colorscale",
                 "type": "category10",
-               "range": {"type": "range"},
+                "range": {"type": "range"},
                 "domain": {"data": "cities", "field": "city"}
-            },{
+            }, {
                 "name": "widthscale",
                 "type": "log",
-                "range": {"type": "range", "value": [3,19]},
+                "range": {"type": "range", "value": [3, 19]},
                 "domain": {"data": "troops", "field": "survivors"}
             }
 
 
-
         ]
-        , "axes": {  
-		     "type": "coord_polar",   // put your type here first ..
-             "properties": [
-			  {
-                "type": "angle", 
-                "data": "cities", 
-				"field":"lat", // da el tdreg ele hyktab 3la circle
-                "angle":"yscale",//el angles el hrsmaha 34an el tdreg
-				"radius":190, // it's option for user to detrimine the radius of circle  but he should  aware about the height when he  use it , if the user don't write it it has defult value   
-                "grid": true,
-				"clockwise":false
+        , "axes": {
+            "type": "coord_polar",   // put your type here first ..
+            "properties": [
+                {
+                    "type": "angle",
+                    "data": "cities",
+                    "field": "lat", // da el tdreg ele hyktab 3la circle
+                    "angle": "yscale",//el angles el hrsmaha 34an el tdreg
+                    "radius": 190, // it's option for user to detrimine the radius of circle  but he should  aware about the height when he  use it , if the user don't write it it has defult value
+                    "grid": true,
+                    "clockwise": false
+                },
+                {
+                    "type": "radius",
+                    "data": "cities",
+                    "field": "long",// el kem ele hktbha 3la el axis
+                    "radius": "x2scale",//position  ele haktab 3ndha el kem
+                    "position": 20//the distance between el axis  and diameter " has defult  value"
+                    // "grid": false
+                }]
+        }
+        , "geom": [
+
+            {
+                "type": "Bar",
+                "data": "cities",
+                "properties": {
+                    "angle": "yscale",
+                    "radius": "x2scale",
+                    "color": "colorscale",
+                    "anticlockwise": true
+                }
+            }
+
+            /*		{
+                            "type": "Pie",
+                            "data": "cities",
+                            "properties": {
+                                "angle": "yscale",
+                                "color" : "colorscale",
+                                "anticlockwise":true
+                            }
+                        }
+                        */]
+        , "guides": [
+
+            {
+                "type": "legend",
+                // "shape":[
+                //{
+                //"gome_type":"point", //test point
+                //"radius":5,//array
+                //"name":"shosho",
+                //"colour":"green",
+                //},
+                //_________________________________
+                //{
+                // "gome_type":"diamond", //test diamond
+                //  "width":20,
+                //"height":20,
+                // "line_weight":8,//array
+                //   "name":"alaa",
+                // "colour":"red",
+                //"fill":"white",
+                //   },
+                //  {
+                //"gome_type":"bar", //test bar
+                //  "width":20,
+                // "height":10,
+                // "line_weight":2,//array
+                //"name":"doha",
+                // "colour":"brown",
+                //"fill":"white",
+                // },
+                //{
+                //"gome_type":"line", //test line
+                //"line_weight":8,
+                //"line_lenght":40,
+                //"width":20,
+                // "height":10,
+                // "name":"doha",
+                // "colour":"black",
+
+
+                //  }
+                //],
+                "domain": {
+                    "type": "colour",//colour ,width scale,
+                    "data": "cities",
+                    // "name": ["positive","negative",""], //array
+                    // "field": ["green","blue","yellow"], // name of field colour or width scale //array
+                    "field": "colorscale",
+                    "symbols": {
+                        // "gome_type":"line", //test line
+                        //"line_weight":5,
+                        //"line_lenght":20,
+                        //"width":30,
+                        // "height":10,
+                        // __________________________________
+                        "gome_type": "bar", //test bar
+                        "width": 20,
+                        "height": 10,
+                        "line_weight": 2,//array
+                        //_________________________________
+                        // {
+                        //"gome_type":"point", //test point
+                        //"width":20,
+                        //"height":10,
+                        //"radius":3,//array
+
+                        // },
+                        //_________________________________
+                        //{
+                        /* "gome_type":"diamond", //test diamond
+                         "width":20,
+                         "height":20,
+                         "line_weight":4,//array*/
+
+
+                    }
+                },
+
+                "properties": {
+                    "title": {
+                        "name": "key map",
+                        //"title_position":"center",
+                        "title_color": "black",
+                        "title_font": "12px Arial",
+                    },
+                    "position": {
+                        "x": 400,
+                        "y": 50,
+                        "stroke_width": 120,
+                        "stroke_height": 200,
+                        // "line_width":10,
+                    }
+                },
+
             },
             {
-                "type": "radius", 
-                "data": "cities", 
-				"field":"long",// el kem ele hktbha 3la el axis 
-                "radius":"x2scale",//position  ele haktab 3ndha el kem 
-			    "position":20//the distance between el axis  and diameter " has defult  value"
-               // "grid": false
-            } ]
-        }
-        , "geom": [ 
-		 
-		{
-		 "type": "Bar",
-                "data": "cities",
+                "type": "text",
                 "properties": {
-                    "angle": "yscale",
-					"radius":"x2scale",
-                    "color" : "colorscale",
-                    "anticlockwise":true
-                }
+                    "label": "Cities and troops Relation",
+                    "font": "20px toham",
+                    "colour": "blue",
+                    "position": {
+                        "x": 300,
+                        "y": 10
+                    }
+                },
             }
-			
-/*		{
-                "type": "Pie",
-                "data": "cities",
-                "properties": {
-                    "angle": "yscale",
-                    "color" : "colorscale",
-                    "anticlockwise":true
-                }
-            }
-			*/]
-			, "guides":[
-           
-			  {
-         "type":"legend",
-		   // "shape":[
-			 //{
-				   //"gome_type":"point", //test point
-				   //"radius":5,//array
-				   //"name":"shosho",
-				   //"colour":"green",
-				   //},
-				  //_________________________________
-				  //{
-				  // "gome_type":"diamond", //test diamond
-				 //  "width":20,
-				   //"height":20,
-				  // "line_weight":8,//array
-				 //   "name":"alaa",
-				   // "colour":"red",
-					//"fill":"white",
-				//   },
-				 //  {
-                 //"gome_type":"bar", //test bar
-				//  "width":20,
-				 // "height":10,
-				 // "line_weight":2,//array
-                   //"name":"doha",
-				   // "colour":"brown",	
-                   //"fill":"white",					
-                  // },
-                  //{
-				  //"gome_type":"line", //test line
-				  //"line_weight":8,
-				  //"line_lenght":40,
-				  //"width":20,
-				 // "height":10,
-				  // "name":"doha",
-				  // "colour":"black",	
-				  
-				  
-				  
-				//  }				   
-			//],
-		       "domain": {
-			    "type":"colour",//colour ,width scale,
-				"data":"cities",
-		       // "name": ["positive","negative",""], //array
-			   // "field": ["green","blue","yellow"], // name of field colour or width scale //array
-			   "field":"colorscale",
-			    "symbols":{
-				// "gome_type":"line", //test line
-				  //"line_weight":5,
-				  //"line_lenght":20,
-				  //"width":30,
-				 // "height":10,
-				 // __________________________________
-				  "gome_type":"bar", //test bar
-				  "width":20,
-				  "height":10,
-				  "line_weight":2,//array
-				  //_________________________________
-				  // {
-				   //"gome_type":"point", //test point
-				   //"width":20,
-				   //"height":10,
-				   //"radius":3,//array
-				  
-				  // },
-				  //_________________________________
-				  //{
-				  /* "gome_type":"diamond", //test diamond
-				   "width":20,
-				   "height":20,
-				   "line_weight":4,//array*/
-				 
-				   
-				   }	   
-				   },
-			
-	      "properties": { 
-		          "title":{
-				  "name":"key map",
-				  //"title_position":"center",
-				  "title_color":"black",
-				  "title_font":"12px Arial",
-				   },
-				   "position":{
-		           "x":400,
-				   "y":50,
-				   "stroke_width":120,
-				   "stroke_height":200,
-				  // "line_width":10,
-		            }
-					},
-				
-				},
-				{
-				"type":"text",
-				"properties":{
-				"label":"Cities and troops Relation",
-				"font":"20px toham",
-				"colour":"blue",
-				 "position":{
-				    "x":300,
-				    "y":10
-					 }
-				},
-      }
- ]
-			
+        ]
+
     };
 
 
     GoG_Parser(specification);
 
-    d3.scale.log().domain([1000,4000]).range([35,350]);
+    d3.scale.log().domain([1000, 4000]).range([35, 350]);
 
     //    scale({"type" : "log", "domain" : [1000,4000], "range" : [35,350]})
     //

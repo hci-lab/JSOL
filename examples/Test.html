@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-	
+
 </head>
 <body>
-<canvas id="canvas1" width="1200" height="500"></canvas>
+<canvas height="500" id="canvas1" width="1200"></canvas>
 
 </body>
 <script src="datalib.min.js"></script>
@@ -37,29 +37,29 @@
         "data": [
             {
                 "name": "crimea",
-                "values" : "yarab.csv",
-                "format" : {
-                    "type" : "csv"
+                "values": "yarab.csv",
+                "format": {
+                    "type": "csv"
                 }
 
             },
-             
+
         ],
-		"transform": [
-          
-			/*{ 
+        "transform": [
+
+            /*{
                 "function": "groupby", // function name
                 "properties": {
                     "data": "crimea",
                     //"length": 20,
                     "field":"x",
-					"yAxes":"y",
-					"y":"newY"
+                    "yAxes":"y",
+                    "y":"newY"
                    
                 }
             }*/
         ],
-       
+
         "scales": [
             {
                 "name": "xscale",
@@ -73,48 +73,47 @@
                 "range": "height",
                 "domain": {"data": "crimea", "field": "y"}//hist newY
             },
-			{
+            {
                 "name": "hscale",
                 "type": "linear",
                 "range": "height",
                 "domain": {"data": "crimea", "field": "y"}
             },
-             
+
             {
                 "name": "colorscale",
                 "type": "category10",
-                "range": ["#808080","#FF0000" ],
+                "range": ["#808080", "#FF0000"],
                 "domain": {"data": "crimea", "field": "c"}
-            },{
+            }, {
                 "name": "widthscale",
                 "type": "log",
-                "range": [3,19],
+                "range": [3, 19],
                 "domain": {"data": "crimea", "field": "c"}
             }
 
 
-
         ]
-        , "axes": {  
-		    "type": "coord_cartesian",   // put your type here first ..
-			 // "type": "coord_flib",
-             "properties": [
-            {
-                "type": "x", // x axis
-                "data": "crimea", // scale for axis
-                "field": "x",
-                "orient": "bottom",
-                "grid": true
-            },
-            {
-                "type": "y", // y axis
-                "data": "crimea", // scale for axis
-                "field": "y",
-                "orient": "left",
-                "grid": true
-            }
-        ]
-		}
+        , "axes": {
+            "type": "coord_cartesian",   // put your type here first ..
+            // "type": "coord_flib",
+            "properties": [
+                {
+                    "type": "x", // x axis
+                    "data": "crimea", // scale for axis
+                    "field": "x",
+                    "orient": "bottom",
+                    "grid": true
+                },
+                {
+                    "type": "y", // y axis
+                    "data": "crimea", // scale for axis
+                    "field": "y",
+                    "orient": "left",
+                    "grid": true
+                }
+            ]
+        }
         , "geom": [
             {
                 "type": "Line",
@@ -122,44 +121,44 @@
                 "properties": {
                     "x": "xscale",//xscale
                     "y": "yscale",//yscale
-					//"dir":"vertical",
-                    "color" : "colorscale",
-                    "width" : 3 ,
-					"fillColor":"colorscale",
-					"border":100
-					/*"type": "StackedBar",
+                    //"dir":"vertical",
+                    "color": "colorscale",
+                    "width": 3,
+                    "fillColor": "colorscale",
+                    "border": 100
+                    /*"type": "StackedBar",
                     "data": "crimea",
                    "properties": {
                     "x": "xscale",
-					"y": "yscale",
-					"sort":"c",
-					"color" : "colorscale",
+                    "y": "yscale",
+                    "sort":"c",
+                    "color" : "colorscale",
                     "width" : 15 ,
-					"fillColor":"colorscale"
-				}
-				/*"type": "vline",
+                    "fillColor":"colorscale"
+                }
+                /*"type": "vline",
                 "data": "crimea",
                 "properties": {
-				    //"groupby" : "x",
-					//"sortby" :"yscale",
+                    //"groupby" : "x",
+                    //"sortby" :"yscale",
                    "x": "xscale",
                    "y": "yscale",
-				   "intersect":"yscale" // you can enter your yscale direct or your array []
-				   
+                   "intersect":"yscale" // you can enter your yscale direct or your array []
+
                 }
-				*/
+                */
+                }
             }
-			}
-             
+
         ]
 
- 
+
     };
 
 
     GoG_Parser(specification);
 
-   // d3.scale.log().domain([1000,4000]).range([35,350]);
+    // d3.scale.log().domain([1000,4000]).range([35,350]);
 
     //    scale({"type" : "log", "domain" : [1000,4000], "range" : [35,350]})
     //

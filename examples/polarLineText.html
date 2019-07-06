@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<canvas id="canvas1" width="1200" height="500"></canvas>
+<canvas height="500" id="canvas1" width="1200"></canvas>
 
 </body>
 <script src="datalib.min.js"></script>
@@ -31,21 +31,21 @@
         "height": 500,
         "margin": 60,
         "background": "rgba(170, 170, 170, 0.1)",
-        "define": ["function testeval1(){ return 1;}","var GLOBAL = 1;"],
+        "define": ["function testeval1(){ return 1;}", "var GLOBAL = 1;"],
         "data": [
             {
                 "name": "troops",
-                "values" : "troops.csv",
-                "format" : {
-                    "type" : "csv"
+                "values": "troops.csv",
+                "format": {
+                    "type": "csv"
                 }
 
             },
             {
                 "name": "cities",
-                "values" : "cities.csv",
-                "format" : {
-                    "type" : "csv"
+                "values": "cities.csv",
+                "format": {
+                    "type": "csv"
                 }
 
             }
@@ -73,13 +73,13 @@
             {
                 "name": "yscale",
                 "type": "linear",
-                "range": {"type": "range", "value": [10,270]},
+                "range": {"type": "range", "value": [10, 270]},
                 "domain": {"data": "cities", "field": "lat"}
             },
             {
                 "name": "x2scale",
                 "type": "linear",
-                 "range": {"type": "range", "value": [0,190]},
+                "range": {"type": "range", "value": [0, 190]},
                 "domain": {"data": "cities", "field": "long"}
             },
             {
@@ -91,106 +91,105 @@
             {
                 "name": "colorscale",
                 "type": "category10",
-               "range": {"type": "range"},
+                "range": {"type": "range"},
                 "domain": {"data": "cities", "field": "city"}
-            },{
+            }, {
                 "name": "widthscale",
                 "type": "log",
-                "range": {"type": "range", "value": [3,19]},
+                "range": {"type": "range", "value": [3, 19]},
                 "domain": {"data": "troops", "field": "survivors"}
             }
 
 
-
         ]
-        , "axes": {  
-		     "type": "coord_polar",   // put your type here first ..
-             "properties": [
-			  {
-                "type": "angle", 
-                "data": "cities", 
-				"field":"lat", // da el tdreg ele hyktab 3la circle
-                "angle":"yscale",//el angles el hrsmaha 34an el tdreg
-				"radius":190, // it's option for user to detrimine the radius of circle  but he should  aware about the height when he  use it , if the user don't write it it has defult value   
-                "grid": true,
-				"clockwise":false,
-				"font_color":"#336600",
-				"coord_color": "gray"//"#ff6666"
+        , "axes": {
+            "type": "coord_polar",   // put your type here first ..
+            "properties": [
+                {
+                    "type": "angle",
+                    "data": "cities",
+                    "field": "lat", // da el tdreg ele hyktab 3la circle
+                    "angle": "yscale",//el angles el hrsmaha 34an el tdreg
+                    "radius": 190, // it's option for user to detrimine the radius of circle  but he should  aware about the height when he  use it , if the user don't write it it has defult value
+                    "grid": true,
+                    "clockwise": false,
+                    "font_color": "#336600",
+                    "coord_color": "gray"//"#ff6666"
+                },
+                {
+                    "type": "radius",
+                    "data": "cities",
+                    "field": "long",// el kem ele hktbha 3la el axis
+                    "radius": "x2scale",//position  ele haktab 3ndha el kem
+                    "position": 20,//the distance between el axis  and diameter " has defult  value"
+                    "grid": false
+                }]
+        }
+        , "geom": [
+            {
+                "type": "Text", //hline
+                "data": "cities",
+                "properties": {
+                    "angle": "yscale",
+                    "distance": "x2scale", //
+                    "text": "city",
+                    //  "fillColor" : "colorscale",
+                }
+
             },
             {
-                "type": "radius", 
-                "data": "cities", 
-				"field":"long",// el kem ele hktbha 3la el axis 
-                "radius":"x2scale",//position  ele haktab 3ndha el kem 
-			    "position":20 ,//the distance between el axis  and diameter " has defult  value"
-                "grid": false
-            } ]
-        }
-        , "geom": [ 
-		{
-				"type": "Text", //hline
-                "data": "cities",
-                "properties": {
-				   "angle": "yscale",
-				   "distance":"x2scale", // 
-				   "text":"city",
-                 //  "fillColor" : "colorscale",
-                }
-				
-            },
-		{
-				"type": "Line", //hline
-                "data": "cities",
-                "properties": {
-				   "angle": "yscale",
-				   "distance":"x2scale", // 
-                   "fillColor" : "colorscale",
-                }
-				
-            },
-		
-		/*{
-				"type": "Point", //hline
-                "data": "cities",
-                "properties": {
-				   "angle": "yscale",
-				   "distance":"x2scale", // 
-                   "fillColor" : "colorscale",
-                }
-				
-            }*/
-		 {
-				"type": "hline", //hline
-                "data": "cities",
-                "properties": {
-				   "intersect":"x2scale",//[1,8],// you can enter your yscale direct or your array []
-				   "color":"red"
-                }
-				
-            }
-		 
-		/*{
-		 "type": "Bar",
+                "type": "Line", //hline
                 "data": "cities",
                 "properties": {
                     "angle": "yscale",
-					"radius":"x2scale",
-                    "color" : "colorscale",
-                    "anticlockwise":true
+                    "distance": "x2scale", //
+                    "fillColor": "colorscale",
                 }
-            }
-			*/
-/*		{
-                "type": "Pie",
+
+            },
+
+            /*{
+                    "type": "Point", //hline
+                    "data": "cities",
+                    "properties": {
+                       "angle": "yscale",
+                       "distance":"x2scale", //
+                       "fillColor" : "colorscale",
+                    }
+
+                }*/
+            {
+                "type": "hline", //hline
                 "data": "cities",
                 "properties": {
-                    "angle": "yscale",
-                    "color" : "colorscale",
-                    "anticlockwise":true
+                    "intersect": "x2scale",//[1,8],// you can enter your yscale direct or your array []
+                    "color": "red"
                 }
+
             }
-			*/]
-			, /*"legend": {
+
+            /*{
+             "type": "Bar",
+                    "data": "cities",
+                    "properties": {
+                        "angle": "yscale",
+                        "radius":"x2scale",
+                        "color" : "colorscale",
+                        "anticlockwise":true
+                    }
+                }
+                */
+            /*		{
+                            "type": "Pie",
+                            "data": "cities",
+                            "properties": {
+                                "angle": "yscale",
+                                "color" : "colorscale",
+                                "anticlockwise":true
+                            }
+                        }
+                        */]
+        , /*"legend": {
 			      "title":"city",
 			      "field":"city",
 				  "color" : "colorscale",
@@ -205,7 +204,7 @@
 
     GoG_Parser(specification);
 
-    d3.scale.log().domain([1000,4000]).range([35,350]);
+    d3.scale.log().domain([1000, 4000]).range([35, 350]);
 
     //    scale({"type" : "log", "domain" : [1000,4000], "range" : [35,350]})
     //
